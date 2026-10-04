@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GHK-Cu — The Copper Peptide | Claims vs Evidence</title>
+<meta name="description" content="An interactive, educational deep-dive into GHK-Cu: what the copper tripeptide is, its proposed mechanisms, the honest evidence check, and what people online report. Not medical advice.">
+<script>
+try{var _t=localStorage.getItem("ghk-theme");if(_t==="light"||_t==="dark")document.documentElement.setAttribute("data-theme",_t);}catch(e){}
+</script>
+<style>
+:root{
+  --bg0:#06070d; --bg1:#0a0c17;
+  --ink:#edf0f9; --muted:#a9b1c9; --faint:#7f88a5;
+  --blue:#7aa8ff; --blue-deep:#2563eb;
+  --copper:#e8a05c; --copper-deep:#9a5b23;
+  --amber:#fbbf24; --rose:#fb7185; --cyan:#67e8f9;
+  --card:#0d1020; --card2:#12162b;
+  --line:rgba(255,255,255,.09);
+  --grad:linear-gradient(100deg,#7aa8ff 10%,#e8a05c 90%);
+  --radius:18px;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --disp:"Avenir Next","Segoe UI",-apple-system,BlinkMacSystemFont,Inter,Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg0);color:var(--ink);
+  font-size:1.06rem;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.bg-grad{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 620px at 12% -6%, rgba(37,99,235,.20), transparent 60%),
+    radial-gradient(820px 600px at 88% 22%, rgba(232,160,92,.10), transparent 60%),
+    radial-gradient(1000px 800px at 50% 110%, rgba(56,120,199,.14), transparent 62%),
+    radial-gradient(700px 500px at 78% 78%, rgba(251,113,133,.07), transparent 60%)}
+#dots{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.85}
+.orb{position:fixed;z-index:0;pointer-events:none;border-radius:50%;filter:blur(90px)}
+.o1{width:520px;height:520px;left:-140px;top:6%;background:radial-gradient(circle,rgba(37,99,235,.16),transparent 70%);animation:drift1 38s ease-in-out infinite alternate}
+.o2{width:460px;height:460px;right:-120px;top:38%;background:radial-gradient(circle,rgba(232,160,92,.12),transparent 70%);animation:drift2 46s ease-in-out infinite alternate}
+.o3{width:430px;height:430px;left:24%;bottom:-160px;background:radial-gradient(circle,rgba(103,232,249,.10),transparent 70%);animation:drift3 54s ease-in-out infinite alternate}
+@keyframes drift1{from{transform:translate(0,0)}to{transform:translate(120px,80px)}}
+@keyframes drift2{from{transform:translate(0,0)}to{transform:translate(-100px,-70px)}}
+@keyframes drift3{from{transform:translate(0,0)}to{transform:translate(90px,-80px)}}
+#confetti{position:fixed;inset:0;z-index:65;pointer-events:none;opacity:0;transition:opacity .6s ease}
+#confetti.show{opacity:1}
+#doneToast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);z-index:66;
+  background:var(--card);border:1px solid var(--line);color:var(--ink);
+  padding:.7rem 1.25rem;border-radius:999px;font-size:.9rem;font-weight:600;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .5s ease,transform .5s ease;
+  box-shadow:0 8px 30px rgba(0,0,0,.28)}
+#doneToast.show{opacity:1;transform:translate(-50%,0)}
+#progress{position:fixed;top:0;left:0;height:3px;width:0%;z-index:60;background:var(--grad);border-radius:0 3px 3px 0}
+#themeToggle{position:fixed;top:12px;right:14px;z-index:70;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:transform .25s ease,background .25s ease;
+  box-shadow:0 4px 18px rgba(0,0,0,.25)}
+#themeToggle:hover{transform:scale(1.08)}
+#themeToggle:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+#themeToggle svg{width:20px;height:20px}
+[data-theme="dark"] #themeToggle .ic-sun{display:block}
+[data-theme="dark"] #themeToggle .ic-moon{display:none}
+[data-theme="light"] #themeToggle .ic-sun{display:none}
+[data-theme="light"] #themeToggle .ic-moon{display:block}
+[data-theme="dark"]{color-scheme:dark}
+nav.chapters{position:sticky;top:0;z-index:50;background:rgba(6,7,13,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav.chapters .rail{max-width:1080px;margin:0 auto;padding:.65rem 1rem;display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;padding-right:3.8rem}
+nav.chapters .rail::-webkit-scrollbar{display:none}
+nav.chapters a{flex:0 0 auto;text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:600;
+  letter-spacing:.04em;padding:.42rem .8rem;border:1px solid var(--line);border-radius:999px;white-space:nowrap;transition:all .25s ease}
+nav.chapters a:hover{color:var(--ink);border-color:rgba(255,255,255,.25)}
+nav.chapters a.active{color:#0a0c14;background:var(--grad);border-color:transparent}
+.toc{display:none}
+@media(min-width:1200px){
+  nav.chapters{display:none}
+  body{padding-left:248px}
+  .toc{display:flex;position:fixed;left:0;top:0;bottom:0;width:248px;z-index:45;
+    flex-direction:column;justify-content:center;gap:.2rem;
+    padding:2rem 1.1rem 2rem 1.4rem;
+    background:rgba(6,7,13,.72);backdrop-filter:blur(14px);border-right:1px solid var(--line)}
+  .toc .brand{font-family:var(--disp);font-weight:800;font-size:.98rem;letter-spacing:-.01em;
+    margin-bottom:1.2rem;line-height:1.35;color:var(--ink);
+    text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+  .toc .brand .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .toc a{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--muted);
+    font-size:.86rem;font-weight:600;padding:.55rem .7rem;border-radius:10px;
+    border:1px solid transparent;transition:all .22s ease;position:relative;z-index:1}
+  .toc a .n{font-size:.72rem;font-weight:800;color:var(--faint);width:1.7rem;flex:0 0 auto;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+  .toc a:hover{color:var(--ink);background:rgba(255,255,255,.045)}
+  .toc a.active{color:#0a0c14;font-weight:700}
+  .toc a.active .n{color:#0a0c14}
+  .toc-pill{position:absolute;left:1.4rem;top:0;width:calc(100% - 2.5rem);height:40px;border-radius:10px;
+    background:var(--grad);z-index:0;opacity:0;pointer-events:none;
+    transition:transform .5s cubic-bezier(.25,.8,.25,1),opacity .35s ease,height .3s ease}
+  .toc .mini{margin-top:1.5rem;font-size:.7rem;color:var(--faint);letter-spacing:.14em;
+    text-transform:uppercase;font-weight:700;display:flex;justify-content:space-between;align-items:baseline}
+  .toc .mini #tocPct{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+    font-size:.85rem;font-weight:800;letter-spacing:0;font-variant-numeric:tabular-nums}
+  .toc .mini-bar{height:3px;background:rgba(255,255,255,.08);border-radius:99px;margin-top:.55rem;overflow:hidden}
+  .toc .mini-bar i{display:block;height:100%;width:0;background:var(--grad);border-radius:99px}
+}
+.wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:0 1.25rem}
+section.chapter{padding:4.2rem 0 1rem;scroll-margin-top:84px}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:1rem}
+.eyebrow .n{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:10px;
+  background:var(--grad);color:#0a0c14;font-size:.85rem;letter-spacing:0}
+h2{font-family:var(--disp);font-size:clamp(1.7rem,4vw,2.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:1rem}
+h2 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{color:var(--muted);font-size:1.12rem;max-width:44rem;margin-bottom:2rem}
+.lede strong{color:var(--ink)}
+.hero{position:relative;z-index:1;text-align:center;padding:5.5rem 1.25rem 3.5rem;max-width:960px;margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:.55rem;font-size:.78rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink);border:1px solid var(--line);background:rgba(255,255,255,.04);
+  padding:.55rem 1.1rem;border-radius:999px;margin-bottom:1.6rem}
+.badge .dot{width:.6rem;height:.6rem;border-radius:50%;background:var(--amber);box-shadow:0 0 0 0 rgba(251,191,36,.6);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(251,191,36,.55)}70%{box-shadow:0 0 0 12px rgba(251,191,36,0)}100%{box-shadow:0 0 0 0 rgba(251,191,36,0)}}
+.hero h1{font-family:var(--disp);font-weight:900;letter-spacing:-.03em;line-height:1.02;font-size:clamp(2.6rem,8vw,5.2rem);margin-bottom:1.1rem}
+.hero h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  background-size:200% auto;animation:sheen 9s ease-in-out infinite}
+@keyframes sheen{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero .sub{color:var(--muted);font-size:clamp(1.05rem,2.4vw,1.3rem);max-width:42rem;margin:0 auto 2.2rem}
+.hero .sub strong{color:var(--ink)}
+.quickread{max-width:46rem;margin:0 auto;text-align:left;background:rgba(255,255,255,.035);
+  border:1px solid var(--line);border-radius:var(--radius);padding:1.3rem 1.5rem;display:flex;gap:1rem;align-items:flex-start}
+.quickread .tag{flex:0 0 auto;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--grad);color:#0a0c14;border-radius:8px;padding:.35rem .7rem;margin-top:.2rem}
+.quickread p{color:var(--muted);font-size:.98rem}
+.quickread p strong{color:var(--ink)}
+.hero-stats{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.4rem}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.1rem 1.5rem;min-width:150px}
+.stat .num{font-family:var(--disp);font-size:2rem;font-weight:800;background:var(--grad);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .lbl{font-size:.8rem;color:var(--faint);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.scroll-hint{margin-top:3rem;color:var(--faint);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.7}50%{transform:translateY(8px);opacity:1}}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.5rem}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--ac,var(--grad))}
+.card.blue{--ac:linear-gradient(90deg,var(--blue-deep),var(--blue))}
+.card.copper{--ac:linear-gradient(90deg,var(--copper-deep),var(--copper))}
+.card h3{font-family:var(--disp);font-size:1.35rem;font-weight:800;margin-bottom:.4rem;letter-spacing:-.01em}
+.card h3 .chem{font-size:.85rem;font-weight:600;color:var(--faint);letter-spacing:.08em}
+.card p,.card li{color:var(--muted);font-size:.99rem}
+.card ul{list-style:none;margin-top:.9rem;display:grid;gap:.65rem}
+.card ul li{padding-left:1.5rem;position:relative}
+.card ul li::before{content:"▸";position:absolute;left:0;font-weight:800}
+.card.blue ul li::before{color:var(--blue)}
+.card.copper ul li::before{color:var(--copper)}
+.card strong{color:var(--ink)}
+.plain{margin-top:1.2rem;background:rgba(255,255,255,.035);border:1px dashed rgba(255,255,255,.22);
+  border-radius:12px;padding:1rem 1.2rem;font-size:.96rem;color:var(--muted)}
+.plain b{color:var(--ink)}
+.plain .plabel{display:block;font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--copper);margin-bottom:.35rem}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem;margin-bottom:1.4rem}
+.panel h3{font-family:var(--disp);font-size:1.3rem;font-weight:800;margin-bottom:.8rem}
+.panel p{color:var(--muted);margin-bottom:.8rem}
+.panel p strong,.panel li strong{color:var(--ink)}
+.kv{display:flex;gap:.9rem;align-items:flex-start;padding:.9rem 0;border-top:1px solid var(--line)}
+.kv:first-of-type{border-top:none}
+.kv .k{flex:0 0 auto;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:.3rem .7rem;border-radius:8px;margin-top:.25rem}
+.kv .k.b{background:rgba(122,168,255,.14);color:var(--blue);border:1px solid rgba(122,168,255,.35)}
+.kv .k.c{background:rgba(232,160,92,.12);color:var(--copper);border:1px solid rgba(232,160,92,.35)}
+.kv .k.a{background:rgba(251,191,36,.12);color:var(--amber);border:1px solid rgba(251,191,36,.35)}
+.kv .k.r{background:rgba(251,113,133,.12);color:var(--rose);border:1px solid rgba(251,113,133,.35)}
+.kv p{font-size:.99rem}
+.diagram{background:radial-gradient(600px 300px at 50% 0%,rgba(37,99,235,.12),transparent 70%),#090b15;
+  border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;margin:0 0 1.4rem;overflow:hidden}
+.diagram svg{display:block;width:100%;height:auto}
+.diagram .cap{text-align:center;color:var(--faint);font-size:.85rem;margin-top:.9rem;letter-spacing:.03em}
+.flow{stroke-dasharray:6 7;animation:dashmove 1.6s linear infinite}
+@keyframes dashmove{to{stroke-dashoffset:-26}}
+.float-slow{animation:floaty 5s ease-in-out infinite}
+.float-slower{animation:floaty 7s ease-in-out infinite reverse}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.glow-pulse{animation:glowp 2.8s ease-in-out infinite}
+@keyframes glowp{0%,100%{opacity:.55}50%{opacity:1}}
+.drift{animation:drift 7s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translateX(0)}50%{transform:translateX(14px)}}
+.sprout{stroke-dasharray:120;stroke-dashoffset:120;transition:stroke-dashoffset 2.2s ease .3s}
+.in .sprout{stroke-dashoffset:0}
+.ebar{margin:1rem 0 1.4rem}
+.ebar .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.4rem}
+.ebar .row .t{font-weight:700;font-size:.98rem}
+.ebar .row .v{font-size:.88rem;color:var(--faint);font-variant-numeric:tabular-nums}
+.ebar .track{height:14px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+.ebar .fill{height:100%;width:0;border-radius:999px;transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.in .ebar .fill{width:var(--w)}
+.ebar .note{font-size:.85rem;color:var(--faint);margin-top:.45rem}
+.anec-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media(max-width:720px){.anec-grid{grid-template-columns:1fr}}
+.anec{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem;position:relative;overflow:hidden}
+.anec::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+.anec .stamp{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.12em;
+  color:var(--amber);border:1px solid rgba(251,191,36,.4);background:rgba(251,191,36,.08);
+  padding:.28rem .6rem;border-radius:7px;text-transform:uppercase;margin-bottom:.65rem}
+.anec h4{font-size:1.05rem;font-weight:800;margin-bottom:.5rem}
+.anec-head{display:flex;align-items:center;gap:.85rem;margin-bottom:.55rem}
+.anec-head .thumb{flex:0 0 auto;width:54px;height:54px;border-radius:14px;border:1px solid var(--line)}
+.anec-head h4{margin-bottom:0}
+.anec p{color:var(--muted);font-size:.95rem}
+.anec p strong{color:var(--ink)}
+.anec .caveat{margin-top:.8rem;font-size:.82rem;color:var(--faint);border-top:1px dashed var(--line);padding-top:.7rem}
+.folk-note{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.3);border-radius:var(--radius);
+  padding:1.2rem 1.4rem;margin-bottom:1.6rem;color:var(--muted);font-size:.98rem}
+.folk-note strong{color:var(--amber)}
+</style>
+<style>
+.gloss{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--card)}
+.g-item{border-bottom:1px solid var(--line)}
+.g-item:last-child{border-bottom:none}
+.g-q{width:100%;background:none;border:none;color:var(--ink);font-family:var(--font);font-size:1.02rem;font-weight:700;
+  text-align:left;padding:1.05rem 1.4rem;cursor:pointer;display:flex;justify-content:flex-start;align-items:center;gap:1rem}
+.g-q:hover{background:rgba(255,255,255,.03)}
+.g-q .term{color:var(--blue)}
+.g-item:nth-child(even) .g-q .term{color:var(--copper)}
+.g-q .plus{flex:0 0 auto;width:1.7rem;height:1.7rem;border-radius:50%;border:1px solid var(--line);margin-left:auto;
+  display:inline-flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--muted);transition:all .3s}
+.g-item.open .g-q .plus{transform:rotate(45deg);background:var(--grad);color:#0a0c14;border-color:transparent}
+.gthumb{flex:0 0 auto;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);
+  animation:gaFloat 5s ease-in-out infinite}
+.gthumb.v2{animation:gaBreathe 4.4s ease-in-out infinite}
+.gthumb.v3{animation:gaTilt 6s ease-in-out infinite}
+@keyframes gaFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes gaBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes gaTilt{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.g-a{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.g-a .gsci,.g-a .gex{padding:0 1.4rem 1rem;color:var(--muted);font-size:.95rem}
+.g-a .gsci strong,.g-a .gex strong{color:var(--ink)}
+.gslabel{display:block;font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:.35rem}
+.g-a .gex{margin:0 1.4rem 1rem;padding:0 0 0 1rem;border-left:2px solid var(--line)}
+.g-a .plain{margin:0 1.4rem 1.3rem}
+.takes{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media(max-width:720px){.takes{grid-template-columns:1fr}}
+.take{background:var(--card2);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem;display:flex;gap:1rem}
+.take .ic{flex:0 0 auto;width:2.6rem;height:2.6rem;border-radius:12px;background:var(--grad);
+  display:flex;align-items:center;justify-content:center;font-size:1.25rem;animation:icBob 4.5s ease-in-out infinite}
+.takes .take:nth-child(2) .ic{animation-delay:-1.2s}
+.takes .take:nth-child(3) .ic{animation-delay:-2.1s}
+.takes .take:nth-child(4) .ic{animation-delay:-.6s}
+.takes .take:nth-child(5) .ic{animation-delay:-3s}
+.takes .take:nth-child(6) .ic{animation-delay:-1.8s}
+@keyframes icBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.take h4{font-size:1.02rem;font-weight:800;margin-bottom:.35rem}
+.take p{color:var(--muted);font-size:.94rem}
+.limits{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;margin-bottom:1rem}
+.limits h3{font-size:1.15rem;font-weight:800;margin-bottom:.8rem}
+.limits ul{list-style:none;display:grid;gap:.6rem;color:var(--muted);font-size:.97rem}
+.limits li{padding-left:1.5rem;position:relative}
+.limits li::before{content:"—";position:absolute;left:0;color:var(--faint)}
+.limits strong{color:var(--ink)}
+footer.disclaimer{position:relative;z-index:1;margin:3rem 0 0;background:#05060b;border-top:1px solid var(--line);padding:3.2rem 0}
+footer.disclaimer .wrap{max-width:960px}
+footer.disclaimer h2{font-size:1.4rem;margin-bottom:1.2rem}
+footer.disclaimer .dbox{border:1px solid rgba(251,191,36,.35);background:rgba(251,191,36,.05);
+  border-radius:var(--radius);padding:1.5rem 1.6rem;margin-bottom:1.4rem}
+footer.disclaimer .dbox p{color:var(--muted);font-size:.93rem;margin-bottom:.8rem}
+footer.disclaimer .dbox p:last-child{margin-bottom:0}
+footer.disclaimer .dbox strong{color:var(--ink)}
+footer.disclaimer .fine{color:var(--faint);font-size:.82rem;display:grid;gap:.6rem}
+footer.disclaimer .fine strong{color:var(--muted)}
+.foot-sign{margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;
+  flex-wrap:wrap;gap:.6rem;color:var(--faint);font-size:.82rem}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.12s}.reveal.d2{transition-delay:.24s}.reveal.d3{transition-delay:.36s}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:1rem 0}
+.num-badge{display:inline-flex;align-items:center;justify-content:center;min-width:2.4rem;height:2.4rem;padding:0 .6rem;
+  border-radius:12px;background:var(--grad);color:#0a0c14;font-weight:800;font-size:1rem;margin-right:.6rem;vertical-align:middle}
+.callout{border-left:3px solid;border-image:linear-gradient(180deg,var(--blue),var(--copper)) 1;
+  padding:.4rem 0 .4rem 1.2rem;margin:1.4rem 0;color:var(--muted);font-size:1rem}
+.callout strong{color:var(--ink)}
+/* ---------- light theme: soft gray ---------- */
+[data-theme="light"]{
+  --bg0:#e3e3e0; --bg1:#d7d7d3;
+  --ink:#232322; --muted:#5b5b57; --faint:#8b8b85;
+  --blue:#1d4ed8; --blue-deep:#1e40af;
+  --copper:#9a5b23; --copper-deep:#7c4a1e;
+  --amber:#b45309; --rose:#be123c; --cyan:#0e7490;
+  --card:#ececea; --card2:#e2e2de;
+  --line:rgba(35,35,35,.16);
+  --grad:linear-gradient(100deg,#2563eb 10%,#b45309 90%);
+  color-scheme:light;
+}
+[data-theme="light"] .bg-grad{background:
+  radial-gradient(900px 620px at 12% -6%, rgba(37,99,235,.10), transparent 60%),
+  radial-gradient(820px 600px at 88% 22%, rgba(180,83,9,.10), transparent 60%),
+  radial-gradient(1000px 800px at 50% 110%, rgba(56,120,199,.08), transparent 62%),
+  radial-gradient(700px 500px at 78% 78%, rgba(190,24,93,.06), transparent 60%)}
+[data-theme="light"] nav.chapters{background:rgba(227,227,224,.88)}
+[data-theme="light"] .toc{background:rgba(227,227,224,.85)}
+[data-theme="light"] .diagram{background:radial-gradient(600px 300px at 50% 0%,rgba(37,99,235,.08),transparent 70%),#e8e8e5}
+[data-theme="light"] footer.disclaimer{background:#d4d4d0}
+[data-theme="light"] .ebar .track{background:rgba(35,35,35,.10)}
+[data-theme="light"] .plain{border-color:rgba(35,35,35,.35)}
+[data-theme="light"] .limits{background:rgba(35,35,35,.05)}
+[data-theme="light"] .quickread{background:rgba(255,255,255,.45)}
+[data-theme="light"] #themeToggle{box-shadow:0 4px 18px rgba(35,35,35,.2)}
+[data-theme="light"] .card::before{opacity:.85}
+[data-theme="light"] svg [fill="#7aa8ff"]{fill:#1d4ed8}
+[data-theme="light"] svg [fill="#e8a05c"]{fill:#9a5b23}
+[data-theme="light"] svg [fill="#7f88a5"]{fill:#716c5e}
+[data-theme="light"] svg [fill="#a9b1c9"]{fill:#57534a}
+[data-theme="light"] svg [fill="#edf0f9"]{fill:#26221a}
+[data-theme="light"] svg [fill="#fb7185"]{fill:#e11d48}
+[data-theme="light"] svg [fill="#3a4160"]{fill:#d9d3c1}
+[data-theme="light"] svg [stroke="#7aa8ff"]{stroke:#1d4ed8}
+[data-theme="light"] svg [stroke="#e8a05c"]{stroke:#9a5b23}
+[data-theme="light"] svg [stroke="#edf0f9"]{stroke:#57534a}
+[data-theme="light"] svg [stroke="#3a4160"]{stroke:#d9d3c1}
+@media(max-width:560px){
+  body{font-size:1rem}
+  section.chapter{padding:3rem 0 .5rem}
+  .hero{padding:4rem 1.25rem 2.5rem}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .flow,.float-slow,.float-slower,.glow-pulse,.travel,.drift,.gthumb,.orb,.take .ic,.hero h1 .g{animation:none}
+  .sprout{transition:none}
+  .toc-pill{transition:none}
+  .scroll-hint{animation:none}
+  #dots{display:none}
+}
+</style>
+</head>
+<body>
+<div class="bg-grad"></div>
+<canvas id="dots" aria-hidden="true"></canvas>
+<div class="orb o1" aria-hidden="true"></div>
+<div class="orb o2" aria-hidden="true"></div>
+<div class="orb o3" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div id="doneToast" role="status">🎉 You reached the end — nice work getting through it all.</div>
+<div id="progress"></div>
+<button id="themeToggle" aria-label="Toggle light / dark mode" title="Toggle light / dark mode">
+  <svg class="ic-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  <svg class="ic-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<nav class="chapters" aria-label="Page chapters">
+  <div class="rail" id="rail">
+    <a href="#ch1" data-spy="ch1">What It Is</a>
+    <a href="#ch2" data-spy="ch2">Why People Care</a>
+    <a href="#ch3" data-spy="ch3">How It Might Work</a>
+    <a href="#ch4" data-spy="ch4">Evidence Check</a>
+    <a href="#ch5" data-spy="ch5">What People Say</a>
+    <a href="#ch6" data-spy="ch6">Safety</a>
+    <a href="#ch7" data-spy="ch7">Layman Terms</a>
+    <a href="#ch8" data-spy="ch8">Takeaways</a>
+  </div>
+</nav>
+
+<aside class="toc" aria-label="Table of contents">
+  <div class="toc-pill" aria-hidden="true"></div>
+  <div class="brand">The <span class="g">Copper</span> Peptide</div>
+  <a href="#ch1" data-spy="ch1"><span class="n">01</span>What It Is</a>
+  <a href="#ch2" data-spy="ch2"><span class="n">02</span>Why People Care</a>
+  <a href="#ch3" data-spy="ch3"><span class="n">03</span>How It Might Work</a>
+  <a href="#ch4" data-spy="ch4"><span class="n">04</span>Evidence Check</a>
+  <a href="#ch5" data-spy="ch5"><span class="n">05</span>What People Say</a>
+  <a href="#ch6" data-spy="ch6"><span class="n">06</span>Safety</a>
+  <a href="#ch7" data-spy="ch7"><span class="n">07</span>Layman Terms</a>
+  <a href="#ch8" data-spy="ch8"><span class="n">08</span>Takeaways</a>
+  <div class="mini">Reading progress <span id="tocPct">0%</span></div>
+  <div class="mini-bar"><i id="tocProg"></i></div>
+</aside>
+
+<header class="hero">
+  <div class="badge"><span class="dot"></span> Cosmetic ingredient · Not FDA-approved as a drug · Educational only</div>
+  <h1>GHK-<span class="g">Cu</span></h1>
+  <p class="sub">The <strong>copper peptide</strong> — a tiny molecule your own blood used to carry in abundance. This page walks through what it is, what it's claimed to do, what the research actually supports, and what people online report. <strong>Claims vs. evidence, side by side.</strong></p>
+  <div class="quickread reveal">
+    <span class="tag">The short version</span>
+    <p><strong>A tripeptide your body already makes, bound to copper, with levels that fall ~60% between age 20 and 60.</strong> It has the strongest human evidence of any peptide in this series — real trials on skin — but most dramatic claims (gene resets, systemic repair) come from lab studies, not people. Not FDA-approved as a drug; notably <em>not</em> on WADA's banned list either.</p>
+  </div>
+  <div class="hero-stats">
+    <div class="stat reveal"><div class="num" data-count="3">0</div><div class="lbl">amino acids + copper</div></div>
+    <div class="stat reveal d1"><div class="num"><span data-count="60">0</span>%</div><div class="lbl">plasma decline, age 20→60</div></div>
+    <div class="stat reveal d2"><div class="num" data-count="4048">0</div><div class="lbl">genes modulated (lab)</div></div>
+    <div class="stat reveal d3"><div class="num"><span data-count="20">0</span>/2</div><div class="lbl">studies / RCTs in 2026 review</div></div>
+  </div>
+  <div class="scroll-hint">Scroll &nbsp;↓</div>
+</header>
+
+<main class="wrap">
+<!-- ================= CHAPTER 1 : WHAT IT IS ================= -->
+<section class="chapter" id="ch1">
+  <div class="eyebrow reveal"><span class="n">01</span> What it is</div>
+  <h2 class="reveal">Three beads and a <span class="hl">copper coin</span></h2>
+  <p class="lede reveal">GHK-Cu is one of the smallest famous peptides: just <strong>three amino acids</strong> — glycine, histidine, lysine — holding onto a single <strong>copper ion</strong>. Your body makes it, carries it in blood, saliva, and urine, and releases it when tissue is damaged. Then, quietly, your levels fall off a cliff with age.</p>
+
+  <div class="diagram reveal">
+    <svg viewBox="0 0 900 250" role="img" aria-label="Diagram of the GHK tripeptide bound to a copper ion">
+      <defs>
+        <linearGradient id="gb" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#7aa8ff"/>
+        </linearGradient>
+        <radialGradient id="gcu" cx=".4" cy=".4" r=".7">
+          <stop offset="0" stop-color="#f5c887"/><stop offset="1" stop-color="#9a5b23"/>
+        </radialGradient>
+      </defs>
+      <g class="float-slow">
+        <circle cx="330" cy="110" r="30" fill="url(#gb)"/>
+        <text x="330" y="118" text-anchor="middle" fill="#0a0c14" font-size="20" font-weight="800" font-family="inherit">G</text>
+        <circle cx="415" cy="110" r="30" fill="url(#gb)"/>
+        <text x="415" y="118" text-anchor="middle" fill="#0a0c14" font-size="20" font-weight="800" font-family="inherit">H</text>
+        <circle cx="500" cy="110" r="30" fill="url(#gb)"/>
+        <text x="500" y="118" text-anchor="middle" fill="#0a0c14" font-size="20" font-weight="800" font-family="inherit">K</text>
+        <line x1="360" y1="110" x2="385" y2="110" stroke="#7aa8ff" stroke-width="6" stroke-linecap="round"/>
+        <line x1="445" y1="110" x2="470" y2="110" stroke="#7aa8ff" stroke-width="6" stroke-linecap="round"/>
+        <text x="330" y="170" text-anchor="middle" fill="#7f88a5" font-size="14" font-family="inherit">Glycine</text>
+        <text x="415" y="170" text-anchor="middle" fill="#7f88a5" font-size="14" font-family="inherit">Histidine</text>
+        <text x="500" y="170" text-anchor="middle" fill="#7f88a5" font-size="14" font-family="inherit">Lysine</text>
+      </g>
+      <g class="float-slower">
+        <line x1="530" y1="110" x2="596" y2="110" stroke="#e8a05c" stroke-width="4" stroke-dasharray="5 6" class="flow"/>
+        <circle cx="630" cy="110" r="34" fill="url(#gcu)" class="glow-pulse"/>
+        <text x="630" y="120" text-anchor="middle" fill="#0a0c14" font-size="22" font-weight="800" font-family="inherit">Cu</text>
+        <text x="630" y="170" text-anchor="middle" fill="#e8a05c" font-size="14" font-weight="700" font-family="inherit">Copper (Cu²⁺)</text>
+      </g>
+      <text x="415" y="42" text-anchor="middle" fill="#a9b1c9" font-size="15" font-family="inherit">GHK — glycyl-L-histidyl-L-lysine — grips copper with unusual affinity</text>
+      <text x="415" y="225" text-anchor="middle" fill="#7f88a5" font-size="14" font-family="inherit">The copper complex (GHK-Cu) is the biologically active form, not the bare peptide.</text>
+    </svg>
+    <div class="cap">Three amino acids, one copper ion. Small enough to slip where larger proteins can't.</div>
+  </div>
+
+  <div class="diagram reveal">
+    <svg viewBox="0 0 900 260" role="img" aria-label="Bar chart of GHK-Cu plasma decline with age">
+      <text x="450" y="30" text-anchor="middle" fill="#a9b1c9" font-size="16" font-weight="700" font-family="inherit">GHK-Cu in blood plasma falls ~60% between age 20 and 60</text>
+      <g>
+        <rect x="120" y="70" width="120" height="150" rx="10" fill="rgba(122,168,255,.18)" stroke="#7aa8ff" stroke-width="2"/>
+        <rect x="390" y="118" width="120" height="102" rx="10" fill="rgba(122,168,255,.12)" stroke="#7aa8ff" stroke-width="2"/>
+        <rect x="660" y="166" width="120" height="54" rx="10" fill="rgba(232,160,92,.16)" stroke="#e8a05c" stroke-width="2"/>
+        <text x="180" y="60" text-anchor="middle" fill="#7aa8ff" font-size="20" font-weight="800" font-family="inherit">200</text>
+        <text x="450" y="108" text-anchor="middle" fill="#7aa8ff" font-size="20" font-weight="800" font-family="inherit">~120</text>
+        <text x="720" y="156" text-anchor="middle" fill="#e8a05c" font-size="20" font-weight="800" font-family="inherit">80</text>
+        <text x="180" y="242" text-anchor="middle" fill="#7f88a5" font-size="15" font-family="inherit">Age 20</text>
+        <text x="450" y="242" text-anchor="middle" fill="#7f88a5" font-size="15" font-family="inherit">Age 40</text>
+        <text x="720" y="242" text-anchor="middle" fill="#7f88a5" font-size="15" font-family="inherit">Age 60</text>
+      </g>
+      <text x="450" y="252" text-anchor="middle" fill="#7f88a5" font-size="13" font-family="inherit">nanograms per mL of plasma (approximate, from published measurements)</text>
+    </svg>
+    <div class="cap">The decline tracks the visible slowdown in skin repair, firmness, and wound healing with age.</div>
+  </div>
+
+  <div class="grid2">
+    <div class="card blue reveal">
+      <h3>The molecule <span class="chem">· GHK-Cu</span></h3>
+      <ul>
+        <li><strong>3 amino acids</strong> (glycine–histidine–lysine) bound to one <strong>copper(II) ion</strong> — the copper complex is the active form.</li>
+        <li>First isolated from <strong>human blood plasma in 1973</strong>, during research into why young plasma made old tissue behave younger.</li>
+        <li>Found in <strong>plasma, saliva, and urine</strong>; released from a protein called SPARC when tissue is injured.</li>
+        <li>Copper is not decoration — it's a <strong>working cofactor</strong> for enzymes that build collagen and fight oxidative damage.</li>
+      </ul>
+      <div class="plain"><span class="plabel">Plain English</span><b>A tiny delivery truck your body already owns:</b> three protein beads carrying one copper coin to wherever repair work is happening. The catch is the fleet shrinks ~60% between your 20s and 60s.</div>
+    </div>
+    <div class="card copper reveal d1">
+      <h3>Why copper matters <span class="chem">· the coin, not just the truck</span></h3>
+      <ul>
+        <li>Copper powers <strong>lysyl oxidase</strong>, the enzyme that cross-links collagen and elastin into strong fibers.</li>
+        <li>It's also essential to <strong>superoxide dismutase</strong>, one of the body's frontline antioxidant enzymes.</li>
+        <li>GHK without copper is a much weaker signal — <strong>the complex does the work</strong>.</li>
+        <li>This is also why GHK-Cu products are visibly <strong>blue</strong>: that's the copper showing.</li>
+      </ul>
+      <div class="plain"><span class="plabel">Plain English</span><b>Copper is the tool, the peptide is the handle.</b> Enzymes that stitch skin together and mop up oxidative damage literally cannot run without copper — GHK-Cu is one way the body delivers it.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHAPTER 2 : WHY PEOPLE CARE ================= -->
+<section class="chapter" id="ch2">
+  <div class="eyebrow reveal"><span class="n">02</span> Why people care</div>
+  <h2 class="reveal">From lab curiosity to <span class="hl">skincare staple</span></h2>
+  <p class="lede reveal">Most peptides in this series live in forums and gray markets. GHK-Cu took a different road: through the <strong>1980s–90s it became a legitimate cosmetic and wound-care ingredient</strong>, sold in creams and serums for over thirty years. The internet's injectable fascination is much newer — and far less studied.</p>
+
+  <div class="diagram reveal">
+    <svg viewBox="0 0 900 300" role="img" aria-label="Timeline of GHK-Cu from discovery to today">
+      <line x1="60" y1="150" x2="840" y2="150" stroke="#3a4160" stroke-width="3"/>
+      <line x1="60" y1="150" x2="840" y2="150" stroke="#7aa8ff" stroke-width="3" class="flow" opacity=".6"/>
+      <g class="float-slow">
+        <circle cx="150" cy="150" r="11" fill="#7aa8ff"/>
+        <text x="150" y="112" text-anchor="middle" fill="#7aa8ff" font-size="19" font-weight="800" font-family="inherit">1973</text>
+        <text x="150" y="196" text-anchor="middle" fill="#a9b1c9" font-size="13.5" font-family="inherit">Isolated from</text>
+        <text x="150" y="216" text-anchor="middle" fill="#a9b1c9" font-size="13.5" font-family="inherit">human plasma</text>
+      </g>
+      <g class="float-slower">
+        <circle cx="380" cy="150" r="11" fill="#7aa8ff"/>
+        <text x="380" y="112" text-anchor="middle" fill="#7aa8ff" font-size="19" font-weight="800" font-family="inherit">1980s–90s</text>
+        <text x="380" y="196" text-anchor="middle" fill="#a9b1c9" font-size="13.5" font-family="inherit">Wound-care &amp;</text>
+        <text x="380" y="216" text-anchor="middle" fill="#a9b1c9" font-size="13.5" font-family="inherit">cosmetic products</text>
+      </g>
+      <g class="float-slow">
+        <circle cx="610" cy="150" r="11" fill="#e8a05c"/>
+        <text x="610" y="112" text-anchor="middle" fill="#e8a05c" font-size="19" font-weight="800" font-family="inherit">2000s–10s</text>
+        <text x="610" y="196" text-anchor="middle" fill="#a9b1c9" font-size="13.5" font-family="inherit">Skin trials:</text>
+        <text x="610" y="216" text-anchor="middle" fill="#a9b1c9" font-size="13.5" font-family="inherit">wrinkles, firmness</text>
+      </g>
+      <g class="float-slower">
+        <circle cx="800" cy="150" r="11" fill="#e8a05c" class="glow-pulse"/>
+        <text x="800" y="112" text-anchor="middle" fill="#e8a05c" font-size="19" font-weight="800" font-family="inherit">Today</text>
+        <text x="800" y="196" text-anchor="middle" fill="#a9b1c9" font-size="13.5" font-family="inherit">Forum injectable</text>
+        <text x="800" y="216" text-anchor="middle" fill="#a9b1c9" font-size="13.5" font-family="inherit">hype (unstudied)</text>
+      </g>
+      <text x="450" y="272" text-anchor="middle" fill="#7f88a5" font-size="14" font-family="inherit">Five decades of history — but the evidence clusters heavily on the left half.</text>
+    </svg>
+    <div class="cap">The cosmetic track has decades of use; the injectable track is forum-era and essentially unstudied.</div>
+  </div>
+
+  <div class="panel reveal">
+    <h3>Three reasons it broke through (and one caveat)</h3>
+    <div class="kv"><span class="k b">Skin</span><p>The strongest case: <strong>human trials on photoaged skin</strong> — density, thickness, fine lines — with results comparable to established actives in some measures.</p></div>
+    <div class="kv"><span class="k c">Wounds</span><p>A <strong>randomized trial in diabetic ulcers</strong> showed dramatically better closure than control — a hard clinical endpoint, not a cosmetic one.</p></div>
+    <div class="kv"><span class="k b">Familiarity</span><p>It's <strong>already in your body</strong> and has sat in skincare for 30+ years, which makes it feel safer than exotic research chemicals — a feeling, not a proof.</p></div>
+    <div class="kv"><span class="k a">Caveat</span><p>Almost all strong evidence is <strong>topical</strong>. The injectable/systemic use hyped online has <strong>no controlled human trials</strong> behind it.</p></div>
+    <div class="plain"><span class="plabel">Plain English</span><b>GHK-Cu earned its fame the old-fashioned way</b> — decades in creams and a few real skin trials — then the internet took that reputation and stretched it onto injectable claims the research never made.</div>
+  </div>
+</section>
+<!-- ================= CHAPTER 3 : MECHANISMS ================= -->
+<section class="chapter" id="ch3">
+  <div class="eyebrow reveal"><span class="n">03</span> Proposed mechanisms</div>
+  <h2 class="reveal">What it's <span class="hl">supposed</span> to do</h2>
+  <p class="lede reveal">GHK-Cu's proposed jobs split into two very different confidence levels: <strong>copper delivery and collagen support</strong> (well-grounded biochemistry) and <strong>broad gene reprogramming</strong> (a striking lab finding with debated meaning). Keep those tiers separate in your head.</p>
+
+  <div class="grid2">
+    <div class="card blue reveal">
+      <h3>Copper delivery <span class="chem">· the grounded tier</span></h3>
+      <div class="diagram" style="margin:1rem 0;padding:1rem">
+        <svg viewBox="0 0 400 210" role="img" aria-label="Animated diagram of GHK delivering copper to enzymes">
+          <defs><path id="cpath" d="M70 105 C 150 105, 210 60, 300 60" fill="none"/></defs>
+          <g class="float-slow">
+            <rect x="30" y="82" width="80" height="46" rx="12" fill="rgba(122,168,255,.12)" stroke="#7aa8ff" stroke-width="2"/>
+            <text x="70" y="100" text-anchor="middle" fill="#7aa8ff" font-size="13" font-weight="700" font-family="inherit">GHK</text>
+            <circle cx="70" cy="114" r="7" fill="#e8a05c"/>
+          </g>
+          <use href="#cpath" stroke="#e8a05c" stroke-width="3" class="flow" fill="none" opacity=".85"/>
+          <g class="float-slower">
+            <rect x="292" y="34" width="92" height="52" rx="12" fill="rgba(232,160,92,.10)" stroke="#e8a05c" stroke-width="2"/>
+            <text x="338" y="56" text-anchor="middle" fill="#e8a05c" font-size="12.5" font-weight="700" font-family="inherit">Enzymes</text>
+            <text x="338" y="73" text-anchor="middle" fill="#7f88a5" font-size="11" font-family="inherit">lysyl oxidase · SOD</text>
+          </g>
+          <circle r="6" fill="#e8a05c" class="glow-pulse"><animateMotion dur="4s" repeatCount="indefinite"><mpath href="#cpath"/></animateMotion></circle>
+          <text x="200" y="150" text-anchor="middle" fill="#7f88a5" font-size="13" font-family="inherit">copper handoff</text>
+          <text x="200" y="180" text-anchor="middle" fill="#7f88a5" font-size="13" font-family="inherit">peptide ferries Cu²⁺ to copper-hungry enzymes</text>
+        </svg>
+      </div>
+      <ul>
+        <li><strong>Copper shuttle</strong> — GHK binds copper tightly and delivers it where enzymes need it.</li>
+        <li><strong>Lysyl oxidase</strong> uses that copper to cross-link <strong>collagen and elastin</strong> into strong fibers.</li>
+        <li><strong>Superoxide dismutase (SOD)</strong> uses copper as an <strong>antioxidant</strong> defense against oxidative damage.</li>
+      </ul>
+      <div class="plain"><span class="plabel">Plain English</span><b>The least controversial part of the story.</b> Copper is a known, essential tool for enzymes that stitch skin together and defuse oxidative damage — GHK-Cu is simply a delivery service your body already runs.</div>
+    </div>
+    <div class="card copper reveal d1">
+      <h3>Gene modulation <span class="chem">· the debated tier</span></h3>
+      <div class="diagram" style="margin:1rem 0;padding:1rem">
+        <svg viewBox="0 0 400 210" role="img" aria-label="Animated diagram of genes being switched toward repair patterns">
+          <g font-family="inherit">
+            <g class="float-slow">
+              <rect x="40" y="40" width="120" height="34" rx="8" fill="rgba(232,160,92,.12)" stroke="#e8a05c" stroke-width="2"/>
+              <text x="100" y="62" text-anchor="middle" fill="#e8a05c" font-size="12.5" font-weight="700">COLLAGEN ↑</text>
+            </g>
+            <g class="float-slower">
+              <rect x="40" y="88" width="120" height="34" rx="8" fill="rgba(232,160,92,.12)" stroke="#e8a05c" stroke-width="2"/>
+              <text x="100" y="110" text-anchor="middle" fill="#e8a05c" font-size="12.5" font-weight="700">ANTIOXIDANT ↑</text>
+            </g>
+            <g class="float-slow">
+              <rect x="240" y="40" width="120" height="34" rx="8" fill="rgba(37,99,235,.10)" stroke="#3a4160" stroke-width="2"/>
+              <text x="300" y="62" text-anchor="middle" fill="#7f88a5" font-size="12.5" font-weight="700">INFLAMMATION ↓</text>
+            </g>
+            <g class="float-slower">
+              <rect x="240" y="88" width="120" height="34" rx="8" fill="rgba(37,99,235,.10)" stroke="#3a4160" stroke-width="2"/>
+              <text x="300" y="110" text-anchor="middle" fill="#7f88a5" font-size="12.5" font-weight="700">TISSUE DAMAGE ↓</text>
+            </g>
+          </g>
+          <g class="glow-pulse">
+            <circle cx="200" cy="150" r="26" fill="rgba(232,160,92,.14)" stroke="#e8a05c" stroke-width="2"/>
+            <text x="200" y="157" text-anchor="middle" fill="#e8a05c" font-size="15" font-weight="800" font-family="inherit">GHK-Cu</text>
+          </g>
+          <text x="200" y="196" text-anchor="middle" fill="#7f88a5" font-size="13" font-family="inherit">~4,048 genes shifted in lab fibroblast studies — direction: toward repair</text>
+        </svg>
+      </div>
+      <ul>
+        <li><strong>~4,048 genes</strong> shifted expression in fibroblast lab studies — repair genes up, inflammatory/destructive genes down.</li>
+        <li>Framed by proponents as <strong>"resetting" aged gene patterns</strong> toward younger baselines.</li>
+        <li><strong>The debate:</strong> gene-expression shifts in a dish don't equal rejuvenation in a person — and the loudest claims come from researchers with commercial stakes.</li>
+      </ul>
+      <div class="plain"><span class="plabel">Plain English</span><b>The most exciting — and most oversold — finding.</b> In lab dishes, GHK-Cu nudges thousands of genes toward repair mode. That's genuinely interesting, but a dish is not a face, and "gene reset" is marketing language, not a medical one.</div>
+    </div>
+  </div>
+  <div class="callout reveal"><strong>The honest summary:</strong> copper delivery is textbook biochemistry; the gene story is a real lab signal wrapped in heavy marketing. Neither tier is the same as <em>proven human benefit</em> — that's chapter 04's job.</div>
+</section>
+
+<!-- ================= CHAPTER 4 : EVIDENCE CHECK ================= -->
+<section class="chapter" id="ch4">
+  <div class="eyebrow reveal"><span class="n">04</span> Honest evidence check</div>
+  <h2 class="reveal">What the research <span class="hl">actually</span> supports</h2>
+  <p class="lede reveal">Here's where GHK-Cu genuinely differs from most peptides in this series: <strong>real human trials exist</strong> — small ones, mostly topical, mostly on skin. The evidence has a clear shape: strong at the surface, thin everywhere else.</p>
+
+  <div class="panel reveal">
+    <h3><span class="num-badge">Skin</span> The strongest ground</h3>
+    <div class="ebar" style="--w:78%">
+      <div class="row"><span class="t">71 women, 12-week facial cream vs placebo</span><span class="v">denser, thicker skin; fewer fine lines</span></div>
+      <div class="track"><div class="fill" style="background:linear-gradient(90deg,#2563eb,#7aa8ff)"></div></div>
+      <div class="note">Instrument-measured improvements (ultrasound, photography) — not just self-reports. Beat vitamin C and retinoic acid on some collagen measures.</div>
+    </div>
+    <div class="ebar" style="--w:64%">
+      <div class="row"><span class="t">41 women, 12-week eye cream vs placebo + vitamin K</span><span class="v">GHK-Cu won</span></div>
+      <div class="track"><div class="fill" style="background:linear-gradient(90deg,#2563eb,#7aa8ff)"></div></div>
+      <div class="note">Periorbital photodamage improved more than both controls.</div>
+    </div>
+    <div class="ebar" style="--w:56%">
+      <div class="row"><span class="t">2022 RCT: 55.7% wrinkle-volume reduction</span><span class="v">12 weeks, 1% cream</span></div>
+      <div class="track"><div class="fill" style="background:linear-gradient(90deg,#9a5b23,#e8a05c)"></div></div>
+      <div class="note">Collagen I production rose 2.1-fold vs 1.4-fold for Matrixyl 3000 in head-to-head comparison.</div>
+    </div>
+  </div>
+
+  <div class="panel reveal">
+    <h3><span class="num-badge">Wounds</span> Hard endpoints, small trials</h3>
+    <div class="ebar" style="--w:82%">
+      <div class="row"><span class="t">Diabetic ulcer RCT: 98.5% vs 60.8% wound closure</span><span class="v">GHK-Cu gel vs control</span></div>
+      <div class="track"><div class="fill" style="background:linear-gradient(90deg,#2563eb,#7aa8ff)"></div></div>
+      <div class="note">Infection rate 7% vs 34%. These are clinical outcomes, not cosmetic scores — the single most compelling human datapoint.</div>
+    </div>
+    <div class="ebar" style="--w:32%">
+      <div class="row"><span class="t">Post-laser resurfacing: better patient satisfaction</span><span class="v">per 2026 systematic review</span></div>
+      <div class="track"><div class="fill" style="background:linear-gradient(90deg,#9a5b23,#e8a05c)"></div></div>
+      <div class="note">Patient-reported outcome from limited clinical data — not an objective speed-of-healing measure, and not yet replicated at scale.</div>
+    </div>
+  </div>
+
+  <div class="panel reveal">
+    <h3><span class="num-badge">Thin ice</span> Where the evidence runs out</h3>
+    <div class="ebar" style="--w:18%">
+      <div class="row"><span class="t">Hair regrowth in humans</span><span class="v">animal + cell data only</span></div>
+      <div class="track"><div class="fill" style="background:linear-gradient(90deg,#9a5b23,#e8a05c)"></div></div>
+      <div class="note">Rodent and macaque follicle studies exist; the one human trial often cited used copper-<em>free</em> GHK. Marketing runs far ahead here.</div>
+    </div>
+    <div class="ebar" style="--w:6%">
+      <div class="row"><span class="t">Injectable / systemic use in humans</span><span class="v">≈ 0 controlled trials</span></div>
+      <div class="track"><div class="fill" style="background:linear-gradient(90deg,#2563eb,#7aa8ff)"></div></div>
+      <div class="note">The entire forum injectable scene rests on anecdotes. No published pharmacokinetics for injected GHK-Cu in humans.</div>
+    </div>
+    <div class="ebar" style="--w:30%">
+      <div class="row"><span class="t">2026 systematic review: 20 studies, 2 RCTs</span><span class="v">"reasonable basis, need bigger trials"</span></div>
+      <div class="track"><div class="fill" style="background:linear-gradient(90deg,#9a5b23,#e8a05c)"></div></div>
+      <div class="note">The field's own summary: biologically plausible, consistent signals — but small samples and a need for larger, standardized trials.</div>
+    </div>
+  </div>
+
+  <div class="panel reveal">
+    <h3>Status check — the non-negotiables</h3>
+    <div class="kv"><span class="k r">FDA</span><p><strong>Not FDA-approved as a drug</strong> for any use. Cosmetics don't require pre-approval, which is how it's sold in skincare — that is <em>not</em> the same as drug approval.</p></div>
+    <div class="kv"><span class="k b">WADA</span><p><strong>Not currently on WADA's Prohibited List</strong> — unlike BPC-157 and TB-500. That said, lists change; tested athletes should always verify the current list themselves.</p></div>
+    <div class="kv"><span class="k a">Regulation</span><p><strong>Two different worlds:</strong> topical cosmetics (decades of ordinary consumer use, regulated as cosmetics) vs injectable gray-market products (unregulated, unstudied in humans).</p></div>
+    <div class="plain"><span class="plabel">Plain English</span><b>The most evidence-backed peptide in this series — and still a modest evidence base.</b> Real skin trials, one strong wound trial, and a long cosmetic track record on one side; essentially nothing on injectable systemic use on the other.</div>
+  </div>
+</section>
+<!-- ================= CHAPTER 5 : ANECDOTES ================= -->
+<section class="chapter" id="ch5">
+  <div class="eyebrow reveal"><span class="n">05</span> What people say</div>
+  <h2 class="reveal">Stories, <span class="hl">not</span> data</h2>
+  <p class="lede reveal">Recurring themes from forums and skincare communities, paraphrased. Every one is an <strong>unverified personal story</strong> — useful for knowing what to watch for, useless as proof.</p>
+  <div class="folk-note reveal"><strong>Read these like overheard conversations, not results.</strong> No controls, no blinding, heavy survivorship bias — the people who saw nothing mostly don't post.</div>
+
+  <div class="anec-grid">
+    <div class="anec reveal">
+      <span class="stamp">Unverified anecdote</span>
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(122,168,255,.10)"/><circle cx="27" cy="27" r="13" fill="none" stroke="#7aa8ff" stroke-width="2.5"/><path d="M27 18c3 4 3 14 0 18M23 20c2 3.4 2 10.6 0 14M31 20c-2 3.4-2 10.6 0 14" stroke="#7aa8ff" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="27" cy="27" r="3" fill="#e8a05c" class="glow-pulse"/></svg><h4>The "glow" reports</h4></div>
+      <p>The single most common theme: <strong>skin looking brighter, firmer, "healthier"</strong> after weeks of topical use. Often described as subtle — the kind of change other people notice before you do.</p>
+      <div class="caveat">Caveat: "glow" is the most placebo-prone outcome in skincare. Lighting, sleep, and routine changes all do this too.</div>
+    </div>
+    <div class="anec reveal d1">
+      <span class="stamp">Unverified anecdote</span>
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(232,160,92,.10)"/><path d="M12 30q5-8 10 0t10 0 10 0" stroke="#e8a05c" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M14 38q4-5 8 0t8 0 8 0" stroke="#e8a05c" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".6"/></svg><h4>Wrinkles softening</h4></div>
+      <p>Long-term topical users frequently claim <strong>fine lines around eyes and forehead look shallower</strong> after 2–3 months. A few compare it favorably to retinoids without the irritation.</p>
+      <div class="caveat">Caveat: this one has partial trial support (the 12-week studies), but forum timelines and magnitudes are self-reported and unverified.</div>
+    </div>
+    <div class="anec reveal">
+      <span class="stamp">Unverified anecdote</span>
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(122,168,255,.10)"/><path d="M27 44c0-8 0-14 0-20M27 24c-4-2-6-6-6-10M27 24c4-2 6-6 6-10M27 30c-3-1-5-4-5-7M27 30c3-1 5-4 5-7" stroke="#7aa8ff" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="27" cy="12" r="3.4" fill="#7aa8ff" class="float-slow"/></svg><h4>Hair regrowth stories</h4></div>
+      <p>Scattered reports of <strong>thicker-feeling hair and slower shedding</strong>, usually from scalp serums used for months. Often stacked with minoxidil, making attribution impossible.</p>
+      <div class="caveat">Caveat: human hair evidence is the thinnest part of the research. These stories outrun the data by a wide margin.</div>
+    </div>
+    <div class="anec reveal d1">
+      <span class="stamp">Unverified anecdote</span>
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(232,160,92,.10)"/><path d="M14 34l8-12 6 8 6-10 6 14" stroke="#e8a05c" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="12" y1="42" x2="42" y2="42" stroke="#7f88a5" stroke-width="2" stroke-linecap="round"/></svg><h4>Faster-healing nicks &amp; spots</h4></div>
+      <p>Users dabbing it on <strong>small cuts, blemishes, and post-procedure skin</strong> report quicker-looking recovery. This is the anecdote tier closest to actual trial data.</p>
+      <div class="caveat">Caveat: closest to the evidence, but still uncontrolled. Small wounds heal on their own — that's the baseline people forget.</div>
+    </div>
+    <div class="anec reveal">
+      <span class="stamp">Unverified anecdote</span>
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(122,168,255,.10)"/><circle cx="27" cy="27" r="11" fill="none" stroke="#7f88a5" stroke-width="2.5"/><path d="M27 20v7l5 3" stroke="#7f88a5" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg><h4>"Nothing happened"</h4></div>
+      <p>The quiet majority: <strong>weeks of use, no visible change</strong>. These posts get fewer replies and sink fast, which is exactly why they matter to mention.</p>
+      <div class="caveat">Caveat: non-responders are undercounted everywhere. Absence of a post isn't absence of non-response.</div>
+    </div>
+    <div class="anec reveal d1">
+      <span class="stamp">Unverified anecdote</span>
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(37,99,235,.16)"/><path d="M18 14c6 8 6 18 0 26M30 14c6 8 6 18 0 26" stroke="#7aa8ff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="36" cy="27" r="4" fill="#e8a05c" class="glow-pulse"/></svg><h4>The blue tint</h4></div>
+      <p>A practical complaint, not a benefit: <strong>GHK-Cu is blue</strong>, and users report tinted fingertips, stained pillowcases, and a faint blue cast if over-applied.</p>
+      <div class="caveat">Caveat: cosmetic nuisance, not a safety signal — but a good authenticity tell. Colorless "GHK-Cu" is suspicious.</div>
+    </div>
+    <div class="anec reveal">
+      <span class="stamp">Unverified anecdote</span>
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(232,160,92,.10)"/><circle cx="22" cy="24" r="7" fill="none" stroke="#e8a05c" stroke-width="2.4"/><circle cx="34" cy="30" r="7" fill="none" stroke="#e8a05c" stroke-width="2.4" opacity=".55"/><path d="M27 27l3-2" stroke="#e8a05c" stroke-width="2" stroke-linecap="round"/></svg><h4>The "purge" debate</h4></div>
+      <p>Some users report <strong>initial breakouts or rough skin</strong> that later clears — others say that's just irritation being rebranded as progress. The argument never resolves.</p>
+      <div class="caveat">Caveat: "purging" is a contested concept in dermatology generally. Irritation is the simpler explanation.</div>
+    </div>
+    <div class="anec reveal d1">
+      <span class="stamp">Unverified anecdote</span>
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(122,168,255,.10)"/><circle cx="27" cy="24" r="9" fill="none" stroke="#7aa8ff" stroke-width="2.4"/><path d="M27 24v5M27 32v.5" stroke="#7aa8ff" stroke-width="2.6" stroke-linecap="round"/><path d="M18 42q9-5 18 0" stroke="#7f88a5" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg><h4>Injectable converts — and doubters</h4></div>
+      <p>The forum injectable crowd splits: some claim <strong>systemic benefits (joints, recovery)</strong>, others point out there's <strong>zero human data</strong> for that route and call it expensive hope.</p>
+      <div class="caveat">Caveat: this is the exact fault line from chapter 04 — topical has trials, injectable has stories. Don't let one borrow the other's credibility.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHAPTER 6 : SAFETY ================= -->
+<section class="chapter" id="ch6">
+  <div class="eyebrow reveal"><span class="n">06</span> Safety &amp; unknowns</div>
+  <h2 class="reveal">Familiar doesn't mean <span class="hl">fully mapped</span></h2>
+  <p class="lede reveal">GHK-Cu's safety story is genuinely better than most peptides discussed online — <strong>decades of topical use with a mild profile</strong>. But "used in face cream" and "injected systemically" are different planets, and only one of them has data.</p>
+
+  <div class="panel reveal">
+    <div class="kv"><span class="k b">Topical</span><p><strong>Well-tolerated in trials and decades of cosmetic use.</strong> Reported issues are mild: temporary redness, occasional irritation, the blue tint. No serious safety signals in the topical literature.</p></div>
+    <div class="kv"><span class="k c">Injectable</span><p><strong>No controlled human safety data.</strong> Whatever the forums report, nobody has formally studied injected GHK-Cu's absorption, distribution, or clearance in people. This is the biggest unknown on the page.</p></div>
+    <div class="kv"><span class="k a">Copper load</span><p><strong>Theoretical, not documented:</strong> copper is essential but toxic in excess. People with copper-metabolism disorders (e.g. Wilson's disease) are the obvious caution group; for everyone else, systemic copper loading from peptides is unstudied.</p></div>
+    <div class="kv"><span class="k r">Angiogenesis</span><p><strong>Theoretical:</strong> like several repair peptides, GHK-Cu is linked to blood-vessel-growth pathways in lab studies — which is why some sources urge caution around active cancers. Unproven, but worth knowing exists as a question.</p></div>
+    <div class="kv"><span class="k b">Purity</span><p><strong>The gray-market wildcard.</strong> Cosmetic GHK-Cu is manufactured to cosmetic standards; unregulated injectable vials have no such guarantee — mislabeled or contaminated product is a documented problem across research peptides generally.</p></div>
+  </div>
+
+  <div class="callout reveal"><strong>The bottom line on safety:</strong> topical GHK-Cu has one of the calmest profiles in the peptide conversation — but calm-topical does not transfer to injectable. Different route, different dose, different evidence: <strong>zero</strong>.</div>
+</section>
+<!-- ================= CHAPTER 7 : GLOSSARY ================= -->
+<section class="chapter" id="ch7">
+  <div class="eyebrow reveal"><span class="n">07</span> Layman terms</div>
+  <h2 class="reveal">The glossary, <span class="hl">no PhD</span> required</h2>
+  <p class="lede reveal">Every term gets three layers: <strong>the science, a GHK-Cu example, then plain English.</strong> Tap to expand.</p>
+
+  <div class="gloss reveal">
+    <div class="g-item">
+      <button class="g-q"><svg class="gthumb" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="12" fill="rgba(122,168,255,.10)"/><circle cx="13" cy="21" r="6" fill="#7aa8ff"/><circle cx="21" cy="21" r="6" fill="#7aa8ff"/><circle cx="29" cy="21" r="6" fill="#7aa8ff"/><circle cx="21" cy="21" r="2.4" fill="#e8a05c"/></svg><span class="term">Tripeptide</span><span class="plus">+</span></button>
+      <div class="g-a">
+        <p class="gsci"><span class="gslabel">The science</span>A peptide is a short chain of amino acids linked by peptide bonds; a <strong>tri</strong>peptide has exactly three. Shorter chains are generally more stable and skin-permeable than long proteins, which is part of why small peptides dominate cosmetic research.</p>
+        <p class="gex"><span class="gslabel">GHK-Cu example</span><strong>GHK is a tripeptide</strong> — glycine, histidine, lysine — and GHK-Cu is that tripeptide plus its copper passenger. Three beads is about as small as a peptide gets while still doing something specific.</p>
+        <div class="plain"><span class="plabel">Plain English</span><b>A three-link chain.</b> Think of amino acids as beads: most proteins are necklaces hundreds of beads long, while GHK is just three beads — small enough to slip into places big proteins can't reach.</div>
+      </div>
+    </div>
+    <div class="g-item">
+      <button class="g-q"><svg class="gthumb v2" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="12" fill="rgba(232,160,92,.10)"/><circle cx="21" cy="21" r="9" fill="#e8a05c"/><text x="21" y="25.5" text-anchor="middle" fill="#0a0c14" font-size="10" font-weight="800" font-family="inherit">Cu</text></svg><span class="term">Copper (Cu²⁺)</span><span class="plus">+</span></button>
+      <div class="g-a">
+        <p class="gsci"><span class="gslabel">The science</span>An essential trace element: the body needs tiny amounts for enzymes like lysyl oxidase (collagen cross-linking), superoxide dismutase (antioxidant defense), and cytochrome c oxidase (energy production). Deficiency impairs repair; excess is toxic.</p>
+        <p class="gex"><span class="gslabel">GHK-Cu example</span><strong>Copper is the working half of GHK-Cu.</strong> GHK binds Cu²⁺ tightly and delivers it to copper-dependent enzymes. It's also why GHK-Cu products are visibly blue — and why blue-tinted fingers are an authenticity tell.</p>
+        <div class="plain"><span class="plabel">Plain English</span><b>A mineral your repair crew can't work without.</b> Like a construction site needing power tools plugged in — the enzymes that stitch skin together literally stall without copper, and GHK is one of the body's extension cords.</div>
+      </div>
+    </div>
+    <div class="g-item">
+      <button class="g-q"><svg class="gthumb v3" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="12" fill="rgba(122,168,255,.10)"/><path d="M10 30q6-10 11-10t11 10" stroke="#7aa8ff" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M14 33q4-6 7-6t7 6" stroke="#7aa8ff" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".6"/></svg><span class="term">Collagen</span><span class="plus">+</span></button>
+      <div class="g-a">
+        <p class="gsci"><span class="gslabel">The science</span>The most abundant protein in the body — rope-like fibers (mostly types I and III in skin) that give dermis its strength and structure. Production slows with age while breakdown continues, which is the core mechanics of wrinkles and sagging.</p>
+        <p class="gex"><span class="gslabel">GHK-Cu example</span><strong>GHK-Cu stimulates collagen synthesis in fibroblasts</strong> in lab studies, and the human trials measured denser, thicker skin after 12 weeks. The 2.1-fold collagen-I increase vs Matrixyl's 1.4-fold is the headline comparison.</p>
+        <div class="plain"><span class="plabel">Plain English</span><b>The scaffolding under your skin.</b> Imagine a mattress: collagen is the springs. Young skin has firm, dense springs; aging flattens them. GHK-Cu is studied for its ability to coax the body into re-springing the mattress.</div>
+      </div>
+    </div>
+    <div class="g-item">
+      <button class="g-q"><svg class="gthumb" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="12" fill="rgba(232,160,92,.10)"/><path d="M12 21q7.5-12 15 0t-15 0" stroke="#e8a05c" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M27 21q7.5-12 15 0" stroke="#e8a05c" stroke-width="2.4" fill="none" stroke-linecap="round" transform="translate(-6 0)"/></svg><span class="term">Elastin</span><span class="plus">+</span></button>
+      <div class="g-a">
+        <p class="gsci"><span class="gslabel">The science</span>The protein that gives skin (and arteries, lungs) its stretch-and-snap-back quality. Unlike collagen, elastin is barely replaced in adult life once damaged — sun-damaged elastin is a major driver of leathery, sagging skin.</p>
+        <p class="gex"><span class="gslabel">GHK-Cu example</span><strong>GHK-Cu is reported to support elastin synthesis</strong> alongside collagen in lab studies — notable because so few actives even claim elastin effects. Human proof, however, is much thinner than for collagen.</p>
+        <div class="plain"><span class="plabel">Plain English</span><b>Your skin's rubber bands.</b> Collagen is the springs; elastin is what snaps everything back after you smile. Once those rubber bands go slack from sun and age, almost nothing restores them — which is why even a lab-level elastin signal gets attention.</div>
+      </div>
+    </div>
+    <div class="g-item">
+      <button class="g-q"><svg class="gthumb v2" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="12" fill="rgba(122,168,255,.10)"/><ellipse cx="21" cy="21" rx="11" ry="8" fill="none" stroke="#7aa8ff" stroke-width="2.4"/><circle cx="21" cy="21" r="3.4" fill="#e8a05c"/><path d="M10 21h-4M35 21h-4M21 10v-4M21 35v-4" stroke="#7aa8ff" stroke-width="1.8" stroke-linecap="round"/></svg><span class="term">Fibroblast</span><span class="plus">+</span></button>
+      <div class="g-a">
+        <p class="gsci"><span class="gslabel">The science</span>The dermis's manufacturing cell: fibroblasts produce collagen, elastin, and the gel-like ground substance of skin. Nearly all GHK-Cu mechanism studies are done on fibroblasts in dishes — they're the standard model for "does this help skin?"</p>
+        <p class="gex"><span class="gslabel">GHK-Cu example</span><strong>The famous 4,048-gene finding was in fibroblasts.</strong> When researchers say GHK-Cu "shifts gene expression toward repair," they mean they watched it happen in these cells — a real signal, one step removed from a person.</p>
+        <div class="plain"><span class="plabel">Plain English</span><b>The skin's factory workers.</b> Fibroblasts are the tiny builders that manufacture your collagen scaffolding. Almost every exciting GHK-Cu lab result is a report from watching these workers in a petri dish — informative, but a dish isn't a face.</div>
+      </div>
+    </div>
+    <div class="g-item">
+      <button class="g-q"><svg class="gthumb v3" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="12" fill="rgba(232,160,92,.10)"/><rect x="10" y="12" width="22" height="5" rx="2.5" fill="#e8a05c" opacity=".45"/><rect x="10" y="19" width="22" height="5" rx="2.5" fill="#e8a05c" opacity=".7"/><rect x="10" y="26" width="22" height="5" rx="2.5" fill="#e8a05c"/></svg><span class="term">Gene expression</span><span class="plus">+</span></button>
+      <div class="g-a">
+        <p class="gsci"><span class="gslabel">The science</span>Which genes a cell has "turned on" at any moment — the same DNA can produce very different behavior depending on expression patterns. Aging shifts expression toward inflammation and slower repair; "reversing" that shift is a major research goal.</p>
+        <p class="gex"><span class="gslabel">GHK-Cu example</span><strong>GHK-Cu altered ~4,048 genes' expression in fibroblasts</strong> — repair and antioxidant genes up, inflammatory and tissue-destroying genes down. Proponents call this a "reset"; skeptics note expression changes don't equal clinical rejuvenation.</p>
+        <div class="plain"><span class="plabel">Plain English</span><b>Which instruction manuals each cell has open.</b> Every cell holds the full library, but aging leaves the "repair" manuals closed and the "inflammation" ones open. GHK-Cu, in lab dishes, appears to flip some of those back — the leap is assuming it does the same in you.</div>
+      </div>
+    </div>
+    <div class="g-item">
+      <button class="g-q"><svg class="gthumb" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="12" fill="rgba(122,168,255,.10)"/><path d="M21 8l4 9 9 4-9 4-4 9-4-9-9-4 9-4z" fill="none" stroke="#7aa8ff" stroke-width="2.2" stroke-linejoin="round"/><circle cx="21" cy="21" r="2.6" fill="#7aa8ff"/></svg><span class="term">Antioxidant</span><span class="plus">+</span></button>
+      <div class="g-a">
+        <p class="gsci"><span class="gslabel">The science</span>Molecules or enzymes that neutralize reactive oxygen species ("free radicals") — unstable byproducts of metabolism and UV exposure that damage DNA, proteins, and cell membranes. The body runs its own antioxidant enzymes, including copper-dependent SOD.</p>
+        <p class="gex"><span class="gslabel">GHK-Cu example</span><strong>GHK-Cu boosts antioxidant defenses two ways:</strong> supplying copper to SOD and upregulating antioxidant genes in lab studies. This is one of the more biochemically grounded claims in its portfolio.</p>
+        <div class="plain"><span class="plabel">Plain English</span><b>Rust-proofing for your cells.</b> Sun and metabolism constantly "rust" your tissues at a molecular level. Antioxidants are the rust-proofing — and GHK-Cu both delivers a key ingredient of the proofing (copper) and tells cells to make more of it.</div>
+      </div>
+    </div>
+    <div class="g-item">
+      <button class="g-q"><svg class="gthumb v2" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="12" fill="rgba(232,160,92,.10)"/><path d="M10 30h22M14 30V18M21 30V12M28 30v-9" stroke="#e8a05c" stroke-width="2.6" stroke-linecap="round"/><circle cx="21" cy="8" r="3" fill="#e8a05c" class="glow-pulse"/></svg><span class="term">Angiogenesis</span><span class="plus">+</span></button>
+      <div class="g-a">
+        <p class="gsci"><span class="gslabel">The science</span>The growth of new blood vessels from existing ones — essential for wound healing (vessels deliver oxygen and nutrients to repair sites). It's also a double-edged sword: tumors hijack angiogenesis to feed themselves.</p>
+        <p class="gex"><span class="gslabel">GHK-Cu example</span><strong>GHK-Cu is linked to angiogenesis pathways in lab studies</strong> — plausibly part of how it aids wound repair, and the reason some sources flag a theoretical caution around active cancers. Unproven either way in humans.</p>
+        <div class="plain"><span class="plabel">Plain English</span><b>Building new supply roads.</b> Healing tissue needs deliveries of oxygen and nutrients, so the body builds tiny new blood vessels to the construction site. Helpful for wounds — but the same road-building can serve unwanted guests, which is why it appears on the caution list.</div>
+      </div>
+    </div>
+    <div class="g-item">
+      <button class="g-q"><svg class="gthumb v3" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="12" fill="rgba(122,168,255,.10)"/><path d="M21 34c0-7 0-11 0-15M21 19c-5-1-7-5-7-10M21 19c5-1 7-5 7-10" stroke="#7aa8ff" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="14" cy="8" r="3" fill="#7aa8ff"/><circle cx="28" cy="8" r="3" fill="#7aa8ff"/></svg><span class="term">Anagen (hair phase)</span><span class="plus">+</span></button>
+      <div class="g-a">
+        <p class="gsci"><span class="gslabel">The science</span>The active growth phase of the hair cycle, lasting 2–7 years per follicle. In pattern hair loss, anagen progressively shortens with each cycle — follicles miniaturize and hairs come back finer until they're invisible. Extending anagen is the core goal of hair-loss science.</p>
+        <p class="gex"><span class="gslabel">GHK-Cu example</span><strong>GHK-Cu enlarged follicles and extended anagen in rodent and macaque studies</strong> — the entire basis of its hair reputation. Human evidence remains thin, which is why hair claims deserve the most skepticism on this page.</p>
+        <div class="plain"><span class="plabel">Plain English</span><b>How long each hair gets to grow before falling out.</b> Each hair has a growing season (years) and a resting season. Balding is what happens when the growing seasons keep getting shorter. GHK-Cu stretched those seasons in lab animals — in people, that's still just a hope.</div>
+      </div>
+    </div>
+    <div class="g-item">
+      <button class="g-q"><svg class="gthumb" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="12" fill="rgba(232,160,92,.10)"/><rect x="13" y="15" width="16" height="12" rx="6" fill="none" stroke="#e8a05c" stroke-width="2.4"/><path d="M21 15v12" stroke="#e8a05c" stroke-width="2" stroke-dasharray="2 3"/></svg><span class="term">Placebo effect</span><span class="plus">+</span></button>
+      <div class="g-a">
+        <p class="gsci"><span class="gslabel">The science</span>Real, measurable improvement caused by expectation, attention, and ritual rather than the treatment's chemistry. Skincare is especially vulnerable: better lighting, new routines, and simply looking closer all manufacture "results."</p>
+        <p class="gex"><span class="gslabel">GHK-Cu example</span><strong>The "glow" anecdotes are peak placebo territory</strong> — subjective, gradual, and entangled with routine changes. This is precisely why the instrument-measured trials (ultrasound, photography) matter more than any forum thread.</p>
+        <div class="plain"><span class="plabel">Plain English</span><b>Feeling better because you did <em>something</em>, not because of what you did.</b> A new serum, a new ritual, closer mirror-checks — all of these make skin "look better" before any chemistry kicks in. It's not fakery; it's just not the product working.</div>
+      </div>
+    </div>
+    <div class="g-item">
+      <button class="g-q"><svg class="gthumb v2" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="12" fill="rgba(122,168,255,.10)"/><circle cx="21" cy="21" r="10" fill="none" stroke="#7aa8ff" stroke-width="2.4"/><path d="M13 13l16 16M29 13L13 29" stroke="#e8a05c" stroke-width="2.4" stroke-linecap="round"/></svg><span class="term">WADA</span><span class="plus">+</span></button>
+      <div class="g-a">
+        <p class="gsci"><span class="gslabel">The science</span>The World Anti-Doping Agency publishes the Prohibited List used in tested sport worldwide. Peptides land on it when they can plausibly enhance performance or recovery — BPC-157 and TB-500 are both banned.</p>
+        <p class="gex"><span class="gslabel">GHK-Cu example</span><strong>GHK-Cu is notably <em>not</em> on WADA's Prohibited List</strong> — one of the few recovery-adjacent peptides that isn't. That doesn't mean "approved"; it just means not currently banned. Lists change, so tested athletes verify the current one.</p>
+        <div class="plain"><span class="plabel">Plain English</span><b>Drug-testing's banned-substances list.</b> Its stack-mates BPC-157 and TB-500 are on it; GHK-Cu isn't — which is part of why it circulates more openly. "Not banned" is not the same as "endorsed."</div>
+      </div>
+    </div>
+    <div class="g-item">
+      <button class="g-q"><svg class="gthumb v3" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="12" fill="rgba(232,160,92,.10)"/><path d="M14 22l5 5 9-11" stroke="#e8a05c" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="21" cy="21" r="12" fill="none" stroke="#e8a05c" stroke-width="2" opacity=".4"/></svg><span class="term">FDA approval</span><span class="plus">+</span></button>
+      <div class="g-a">
+        <p class="gsci"><span class="gslabel">The science</span>FDA drug approval requires phased human trials proving safety and efficacy for a specific use — a years-long, expensive process. Cosmetics, by contrast, don't need pre-approval: ingredients just must be safe for their cosmetic use and not make drug claims.</p>
+        <p class="gex"><span class="gslabel">GHK-Cu example</span><strong>GHK-Cu is not FDA-approved as a drug for anything.</strong> Its 30-year presence in skincare happened through the cosmetic channel — legal, but a completely different evidence bar than drug approval. Don't let "sold for decades" read as "proven medicine."</p>
+        <div class="plain"><span class="plabel">Plain English</span><b>Two different doors into the market.</b> The "drug" door needs years of trials proving it works; the "cosmetic" door just needs it to be safe as a face cream. GHK-Cu walked through the cosmetic door — respectable, but it's not the same building as medicine.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHAPTER 8 : TAKEAWAYS ================= -->
+<section class="chapter" id="ch8">
+  <div class="eyebrow reveal"><span class="n">08</span> Takeaways</div>
+  <h2 class="reveal">The <span class="hl">honest</span> summary</h2>
+  <p class="lede reveal">If you remember nothing else:</p>
+  <div class="takes">
+    <div class="take reveal"><div class="ic">🧬</div><div><h4>Your body makes it — then stops</h4><p>GHK-Cu is endogenous, and plasma levels fall ~60% from age 20 to 60. The "replenishment" story is the most honest frame for it.</p></div></div>
+    <div class="take reveal d1"><div class="ic">🔬</div><div><h4>Best-evidenced peptide in the series</h4><p>Real human skin trials and one strong wound-healing RCT — modest samples, but more than BPC-157 or TB-500 can show.</p></div></div>
+    <div class="take reveal"><div class="ic">🧴</div><div><h4>Topical is the evidence; injectable is the hype</h4><p>Nearly everything proven is about creams and serums. The forum injectable scene has zero controlled human trials.</p></div></div>
+    <div class="take reveal d1"><div class="ic">⚖️</div><div><h4>Two tiers of mechanism</h4><p>Copper delivery is textbook biochemistry; the 4,048-gene "reset" is a real lab signal wrapped in heavy marketing. Keep them separate.</p></div></div>
+    <div class="take reveal"><div class="ic">🚫</div><div><h4>Not a drug, not banned either</h4><p>Not FDA-approved as a drug; sold via the cosmetic channel. Notably absent from WADA's list — unlike its peptide cousins.</p></div></div>
+    <div class="take reveal d1"><div class="ic">❓</div><div><h4>Unknowns remain</h4><p>Injectable safety, long-term systemic effects, hair claims, and the angiogenesis question are all still open. Familiar ≠ fully mapped.</p></div></div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="limits reveal">
+    <h3>Limits of this page</h3>
+    <ul>
+      <li><strong>Dosing, schedules, sourcing, and administration are deliberately omitted.</strong> This page will not tell you how much to use, how often, where to buy it, or how to prepare it — for any route.</li>
+      <li>Trial figures are paraphrased from published summaries; <strong>sample sizes are small</strong> and methods vary between studies.</li>
+      <li>Forum anecdotes are <strong>paraphrased recurring themes</strong>, not quotes, not data, and not endorsements.</li>
+      <li>Regulatory and WADA status can change — <strong>verify current lists</strong> yourself if it matters to you.</li>
+      <li>This page is a map of <strong>claims vs evidence</strong>, not a recommendation to use anything.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="disclaimer">
+  <div class="wrap">
+    <h2>Please read this before you go</h2>
+    <div class="dbox">
+      <p><strong>This page is for education and entertainment only. It is not medical advice, not a recommendation, and not an encouragement to obtain or use any compound.</strong> Nothing here establishes that GHK-Cu is safe or effective for any purpose in humans beyond what the cited research shows — and most of that research is small, topical, and preliminary.</p>
+      <p><strong>GHK-Cu is not FDA-approved as a drug for any use.</strong> Its presence in cosmetics reflects cosmetic regulation, not drug-level proof. Injectable or otherwise systemic use in humans is essentially unstudied: no controlled trials establish its safety, dosing, or effects by those routes.</p>
+      <p><strong>Anecdotes are not evidence.</strong> Personal stories from forums cannot prove cause and effect, and this page presents them only so you know what circulates — not so you'll act on them.</p>
+      <p><strong>Copper is essential and toxic in excess.</strong> Anyone with a copper-metabolism disorder, a serious medical condition, or who is pregnant, breastfeeding, or an athlete subject to testing should not act on anything here without a qualified professional.</p>
+      <p><strong>Talk to a qualified healthcare professional</strong> before making any decision about your health. The author is not a medical professional, assumes no liability for actions taken based on this page, and has no commercial interest in any GHK-Cu product.</p>
+    </div>
+    <div class="fine">
+      <p><strong>Accuracy note:</strong> figures and study descriptions are paraphrased from publicly reported research summaries. If a number matters to a decision you're making, check the primary source.</p>
+      <p><strong>No names, no sources linked:</strong> anecdotes are paraphrased themes from public forums; no individuals are identified or quoted.</p>
+    </div>
+    <div class="foot-sign"><span>An interactive educational infographic · single-file build</span><span>Not medical advice.</span></div>
+  </div>
+</footer>
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced){
+    document.querySelectorAll("svg").forEach(function(s){ if (s.pauseAnimations) s.pauseAnimations(); });
+  }
+
+  /* ---------- theme toggle (persisted, applied pre-paint) ---------- */
+  var root = document.documentElement, tog = document.getElementById("themeToggle");
+  tog.addEventListener("click", function(){
+    var next = root.getAttribute("data-theme")==="dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try{ localStorage.setItem("ghk-theme", next); }catch(e){}
+  });
+
+  /* ---------- smooth anchor scrolling (nav + sidebar) ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener("click", function(ev){
+      var t = document.querySelector(a.getAttribute("href"));
+      if (t){ ev.preventDefault(); t.scrollIntoView({behavior: reduced?"auto":"smooth", block:"start"}); }
+    });
+  });
+
+  /* ---------- ambient dot canvas ---------- */
+  var cv = document.getElementById("dots"), cx = cv.getContext("2d"), dots = [];
+  var DCOLORS = ["122,168,255","232,160,92","154,91,35","201,141,74"];
+  function sizeDots(){
+    var dpr = Math.min(window.devicePixelRatio||1, 2);
+    cv.width = innerWidth*dpr; cv.height = innerHeight*dpr;
+    cv.style.width = innerWidth+"px"; cv.style.height = innerHeight+"px";
+    cx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  sizeDots(); window.addEventListener("resize", sizeDots);
+  for (var i=0;i<85;i++){
+    dots.push({x:Math.random()*innerWidth, y:Math.random()*innerHeight,
+      r:1.5+Math.random()*3, vx:(Math.random()-.5)*.35, vy:(Math.random()-.5)*.35,
+      c:DCOLORS[(Math.random()*DCOLORS.length)|0], a:.22+Math.random()*.38,
+      ph:Math.random()*6.28, sp:.004+Math.random()*.012});
+  }
+  function dotsTick(){
+    cx.clearRect(0,0,innerWidth,innerHeight);
+    for (var k=0;k<dots.length;k++){
+      var d = dots[k]; d.ph += d.sp;
+      d.x += d.vx; d.y += d.vy;
+      if (d.x<-10) d.x = innerWidth+10; if (d.x>innerWidth+10) d.x = -10;
+      if (d.y<-10) d.y = innerHeight+10; if (d.y>innerHeight+10) d.y = -10;
+      var tw = d.a*(0.55+0.45*Math.sin(d.ph));
+      cx.beginPath(); cx.arc(d.x,d.y,d.r,0,6.2832);
+      cx.fillStyle = "rgba("+d.c+","+tw.toFixed(3)+")"; cx.fill();
+    }
+    if (!reduced) requestAnimationFrame(dotsTick);
+  }
+  dotsTick();
+
+  /* ---------- scroll reveal ---------- */
+  var revEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  function revCheck(){
+    var vh = window.innerHeight;
+    revEls.forEach(function(el){
+      if (el.classList.contains("in")) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh*0.88) el.classList.add("in");
+    });
+  }
+  window.addEventListener("scroll", revCheck, {passive:true}); revCheck();
+
+  /* ---------- count-up stats ---------- */
+  var counters = Array.prototype.slice.call(document.querySelectorAll("[data-count]"));
+  var counted = false;
+  function countUp(){
+    if (counted) return;
+    var hero = document.querySelector(".hero-stats");
+    if (!hero) return;
+    var r = hero.getBoundingClientRect();
+    if (r.top > window.innerHeight*0.9) return;
+    counted = true;
+    counters.forEach(function(el){
+      var target = parseInt(el.getAttribute("data-count"),10), t0 = null;
+      function step(ts){
+        if (!t0) t0 = ts;
+        var p = Math.min((ts-t0)/1600, 1), e = 1-Math.pow(1-p,3);
+        el.textContent = Math.round(target*e).toLocaleString("en-US");
+        if (p<1) requestAnimationFrame(step);
+      }
+      if (reduced){ el.textContent = target.toLocaleString("en-US"); }
+      else requestAnimationFrame(step);
+    });
+  }
+  window.addEventListener("scroll", countUp, {passive:true}); countUp();
+
+  /* ---------- scrollspy + gliding pill ---------- */
+  var links = Array.prototype.slice.call(document.querySelectorAll('a[data-spy]'));
+  var secs = links.map(function(a){ return document.getElementById(a.getAttribute("data-spy")); }).filter(Boolean);
+  var tocPill = document.querySelector('.toc .toc-pill');
+  function spy(){
+    var y = window.scrollY + 140, cur = secs[0] ? secs[0].id : null;
+    secs.forEach(function(s){ if (s.offsetTop <= y) cur = s.id; });
+    links.forEach(function(a){ a.classList.toggle("active", a.getAttribute("data-spy")===cur); });
+    if (tocPill){
+      var active = document.querySelector('.toc a[data-spy="'+cur+'"]');
+      if (active){
+        tocPill.style.opacity = "1";
+        tocPill.style.height = active.offsetHeight + "px";
+        tocPill.style.transform = "translateY(" + active.offsetTop + "px)";
+      } else { tocPill.style.opacity = "0"; }
+    }
+  }
+  window.addEventListener("scroll", spy, {passive:true});
+  window.addEventListener("resize", spy);
+  window.addEventListener("load", spy);
+  spy();
+
+  /* ---------- scroll progress (lerped) ---------- */
+  var prog = document.getElementById("progress");
+  var tocProg = document.getElementById("tocProg");
+  var tocPct = document.getElementById("tocPct");
+  var progTarget = 0, progShown = 0, progRaf = null;
+  function paintProg(p){
+    prog.style.width = p + "%";
+    if (tocProg) tocProg.style.width = p + "%";
+    if (tocPct) tocPct.textContent = Math.round(p) + "%";
+  }
+  function progTick(){
+    progRaf = null;
+    progShown += (progTarget - progShown) * 0.16;
+    if (Math.abs(progTarget - progShown) < 0.05) progShown = progTarget;
+    paintProg(progShown);
+    if (progShown !== progTarget) progRaf = requestAnimationFrame(progTick);
+  }
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    progTarget = max>0 ? (h.scrollTop/max*100) : 0;
+    if (reduced){ progShown = progTarget; paintProg(progShown); return; }
+    if (progRaf === null) progRaf = requestAnimationFrame(progTick);
+  }
+  window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
+
+  /* ---------- glossary accordion ---------- */
+  document.querySelectorAll(".g-item").forEach(function(item){
+    var q = item.querySelector(".g-q"), a = item.querySelector(".g-a");
+    q.addEventListener("click", function(){
+      var open = item.classList.toggle("open");
+      a.style.maxHeight = open ? (a.scrollHeight + "px") : "0px";
+    });
+  });
+
+  /* ---------- completion confetti ---------- */
+  var confCanvas = document.getElementById("confetti"),
+      cctx = confCanvas.getContext("2d"),
+      confettiDone = false, confettiPieces = [], confettiRaf = null;
+  var CONF_COLORS = ["122,168,255","232,160,92","103,232,249","251,113,133","251,191,36"];
+  function sizeConfetti(){
+    var dpr = Math.min(window.devicePixelRatio||1, 2);
+    confCanvas.width = window.innerWidth*dpr;
+    confCanvas.height = window.innerHeight*dpr;
+    confCanvas.style.width = window.innerWidth+"px";
+    confCanvas.style.height = window.innerHeight+"px";
+    cctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function confettiTick(){
+    var W = window.innerWidth, H = window.innerHeight, alive = false, i, p, fade;
+    cctx.clearRect(0,0,W,H);
+    for (i=0;i<confettiPieces.length;i++){
+      p = confettiPieces[i];
+      p.life++; p.sway += p.swaySpd;
+      p.x += p.vx + Math.sin(p.sway)*0.8;
+      p.y += p.vy; p.rot += p.vr;
+      if (p.y > H+30 || p.life >= p.max) continue;
+      alive = true;
+      fade = p.life > p.max-60 ? Math.max(0,(p.max-p.life)/60) : 1;
+      cctx.save();
+      cctx.translate(p.x,p.y); cctx.rotate(p.rot);
+      cctx.fillStyle = "rgba("+p.c+","+(0.85*fade).toFixed(3)+")";
+      if (i%3===0){ cctx.beginPath(); cctx.arc(0,0,p.w/2,0,6.2832); cctx.fill(); }
+      else { cctx.fillRect(-p.w/2,-p.h/2,p.w,p.h); }
+      cctx.restore();
+    }
+    if (alive){ confettiRaf = requestAnimationFrame(confettiTick); }
+    else { confettiRaf = null; confCanvas.classList.remove("show"); confettiPieces = []; }
+  }
+  function launchConfetti(){
+    if (confettiDone || reduced) return;
+    confettiDone = true;
+    sizeConfetti();
+    window.addEventListener("resize", sizeConfetti);
+    var W = window.innerWidth, i;
+    for (i=0;i<70;i++){
+      confettiPieces.push({
+        x: Math.random()*W, y: -20-Math.random()*90,
+        w: 4+Math.random()*5, h: 6+Math.random()*7,
+        vy: 1.2+Math.random()*2.2, vx: (Math.random()-.5)*1.4,
+        rot: Math.random()*6.28, vr: (Math.random()-.5)*0.2,
+        sway: Math.random()*6.28, swaySpd: 0.02+Math.random()*0.04,
+        c: CONF_COLORS[(Math.random()*CONF_COLORS.length)|0],
+        life: 0, max: 240+Math.random()*120
+      });
+    }
+    confCanvas.classList.add("show");
+    var toast = document.getElementById("doneToast");
+    if (toast){
+      toast.classList.add("show");
+      setTimeout(function(){ toast.classList.remove("show"); }, 4200);
+    }
+    confettiRaf = requestAnimationFrame(confettiTick);
+  }
+  var footEl = document.querySelector("footer.disclaimer");
+  if (footEl && "IntersectionObserver" in window){
+    var footObs = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ launchConfetti(); footObs.disconnect(); } });
+    }, {threshold: 0.35});
+    footObs.observe(footEl);
+  }
+})();
+</script>
+</body>
+</html>
