@@ -212,6 +212,17 @@ h2 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;
 .folk-note{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.3);border-radius:var(--radius);
   padding:1.2rem 1.4rem;margin-bottom:1.6rem;color:var(--muted);font-size:.98rem}
 .folk-note strong{color:var(--amber)}
+
+/* --- ambient motion additions: subtle, additive, non-intrusive --- */
+@keyframes ringp{0%{transform:scale(.5);opacity:.85}100%{transform:scale(2.1);opacity:0}}
+.ringp{transform-box:fill-box;transform-origin:center;animation:ringp 2.8s ease-out infinite}
+@keyframes seqGlow{0%,100%{opacity:.35}18%{opacity:1}40%{opacity:.35}}
+.seqr1{animation:seqGlow 4.5s ease-in-out infinite}
+.seqr2{animation:seqGlow 4.5s ease-in-out .9s infinite}
+.seqr3{animation:seqGlow 4.5s ease-in-out 1.8s infinite}
+.flowseq{stroke-dasharray:6 7;animation:dashmove 1.6s linear infinite,seqGlow 4.5s ease-in-out infinite}
+.flowseq2{stroke-dasharray:6 7;animation:dashmove 1.6s linear infinite,seqGlow 4.5s ease-in-out .9s infinite}
+.flowseq3{stroke-dasharray:6 7;animation:dashmove 1.6s linear infinite,seqGlow 4.5s ease-in-out 1.8s infinite}
 </style>
 <style>
 .gloss{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--card)}
@@ -324,7 +335,7 @@ footer.disclaimer .fine strong{color:var(--muted)}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
-  .flow,.float-slow,.float-slower,.glow-pulse,.travel,.drift,.gthumb,.orb,.take .ic,.hero h1 .g{animation:none}
+  .flow,.float-slow,.float-slower,.glow-pulse,.travel,.drift,.gthumb,.orb,.take .ic,.hero h1 .g,.ringp,.seqr1,.seqr2,.seqr3,.flowseq,.flowseq2,.flowseq3{animation:none}
   .sprout{transition:none}
   .toc-pill{transition:none}
   .scroll-hint{animation:none}
@@ -539,9 +550,10 @@ footer.disclaimer .fine strong{color:var(--muted)}
           <g class="float-slow">
             <rect x="30" y="82" width="80" height="46" rx="12" fill="rgba(122,168,255,.12)" stroke="#5f9dff" stroke-width="2"/>
             <text x="70" y="100" text-anchor="middle" fill="#5f9dff" font-size="13" font-weight="700" font-family="inherit">GHK</text>
-            <circle cx="70" cy="114" r="7" fill="#f0973c"/>
+            <circle class="ringp" cx="70" cy="114" r="7" fill="none" stroke="#f0973c" stroke-width="2"/><circle cx="70" cy="114" r="7" fill="#f0973c"/>
           </g>
           <use href="#cpath" stroke="#f0973c" stroke-width="3" class="flow" fill="none" opacity=".85"/>
+          <rect class="ringp" x="282" y="34" width="112" height="52" rx="12" fill="none" stroke="#f0973c" stroke-width="2"/>
           <g class="float-slower">
             <rect x="282" y="34" width="112" height="52" rx="12" fill="rgba(240,151,60,.10)" stroke="#f0973c" stroke-width="2"/>
             <text x="338" y="56" text-anchor="middle" fill="#f0973c" font-size="12.5" font-weight="700" font-family="inherit">Enzymes</text>
@@ -564,15 +576,15 @@ footer.disclaimer .fine strong{color:var(--muted)}
       <div class="diagram" style="margin:1rem 0;padding:1rem">
         <svg viewBox="0 0 400 210" role="img" aria-label="Animated diagram of genes being switched toward repair patterns">
           <g font-family="inherit">
-            <g class="float-slow">
+            <g class="float-slow seqr1">
               <rect x="40" y="40" width="120" height="34" rx="8" fill="rgba(232,160,92,.12)" stroke="#f0973c" stroke-width="2"/>
               <text x="100" y="62" text-anchor="middle" fill="#f0973c" font-size="12.5" font-weight="700">COLLAGEN ↑</text>
             </g>
-            <g class="float-slower">
+            <g class="float-slower seqr2">
               <rect x="40" y="88" width="120" height="34" rx="8" fill="rgba(232,160,92,.12)" stroke="#f0973c" stroke-width="2"/>
               <text x="100" y="110" text-anchor="middle" fill="#f0973c" font-size="12.5" font-weight="700">ANTIOXIDANT ↑</text>
             </g>
-            <g class="float-slow">
+            <g class="float-slow seqr3">
               <rect x="240" y="40" width="120" height="34" rx="8" fill="rgba(37,99,235,.10)" stroke="#3a4160" stroke-width="2"/>
               <text x="300" y="62" text-anchor="middle" fill="#7f88a5" font-size="12.5" font-weight="700">INFLAMMATION ↓</text>
             </g>
@@ -731,6 +743,25 @@ footer.disclaimer .fine strong{color:var(--muted)}
   <div class="eyebrow reveal"><span class="n">06</span> Safety &amp; unknowns</div>
   <h2 class="reveal">Familiar doesn't mean <span class="hl">fully mapped</span></h2>
   <p class="lede reveal">GHK-Cu's safety story is genuinely better than most peptides discussed online — <strong>decades of topical use with a mild profile</strong>. But "used in face cream" and "injected systemically" are different planets, and only one of them has data.</p>
+      <div class="diagram reveal">
+      <svg viewBox="0 0 900 250" role="img" aria-label="Three pulsing open questions about GHK-Cu">
+      <g font-family="inherit" text-anchor="middle">
+      <text x="450" y="28" fill="#a9b1c9" font-size="14">Familiar — but still pulsing with open questions</text>
+      <circle class="ringp" cx="180" cy="105" r="32" fill="none" stroke="#5f9dff" stroke-width="2"/>
+      <circle cx="180" cy="105" r="32" fill="rgba(255,255,255,.03)" stroke="#5f9dff" stroke-width="2"/>
+      <text x="180" y="100" fill="#5f9dff" font-size="13.5" font-weight="800">Injectable safety?</text>
+      <text x="180" y="120" fill="#a9b1c9" font-size="11.5">systemic use uncharted</text>
+      <circle class="ringp" cx="450" cy="105" r="32" fill="none" stroke="#f0973c" stroke-width="2"/>
+      <circle cx="450" cy="105" r="32" fill="rgba(255,255,255,.03)" stroke="#f0973c" stroke-width="2"/>
+      <text x="450" y="100" fill="#f0973c" font-size="13.5" font-weight="800">Long-term systemic?</text>
+      <text x="450" y="120" fill="#a9b1c9" font-size="11.5">decades topical, not injected</text>
+      <circle class="ringp" cx="720" cy="105" r="32" fill="none" stroke="#5f9dff" stroke-width="2"/>
+      <circle cx="720" cy="105" r="32" fill="rgba(255,255,255,.03)" stroke="#5f9dff" stroke-width="2"/>
+      <text x="720" y="100" fill="#5f9dff" font-size="13.5" font-weight="800">Angiogenesis?</text>
+      <text x="720" y="120" fill="#a9b1c9" font-size="11.5">vessel growth: help or hazard?</text>
+      </g>
+      </svg>
+      </div>
 
   <div class="panel reveal">
     <div class="kv"><span class="k b">Topical</span><p><strong>Well-tolerated in trials and decades of cosmetic use.</strong> Reported issues are mild: temporary redness, occasional irritation, the blue tint. No serious safety signals in the topical literature.</p></div>
