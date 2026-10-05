@@ -197,6 +197,13 @@ h2 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;
   padding:.28rem .6rem;border-radius:7px;text-transform:uppercase;margin-bottom:.65rem}
 .anec h4{font-size:1.05rem;font-weight:800;margin-bottom:.5rem}
 .anec-head{display:flex;align-items:center;gap:.85rem;margin-bottom:.55rem}
+.udot{display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--amber);flex:0 0 auto;position:relative}
+.udot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--amber);animation:udotPulse 2.2s ease-out infinite}
+@keyframes udotPulse{0%{transform:scale(.55);opacity:.9}70%{opacity:.25}100%{transform:scale(1.25);opacity:0}}
+.anec-head .udot{margin-left:.15rem}
+.ulegend{display:flex;align-items:center;gap:.75rem;margin:0 0 1.5rem;padding:.85rem 1.15rem;border:1px dashed var(--line);border-radius:14px;background:rgba(255,255,255,.03);color:var(--muted);font-size:.93rem}
+.ulegend strong{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.udot::after{animation:none;opacity:.35;transform:scale(.8)}}
 .anec-head .thumb{flex:0 0 auto;width:54px;height:54px;border-radius:14px;border:1px solid var(--line)}
 .anec-head h4{margin-bottom:0}
 .anec p{color:var(--muted);font-size:.95rem}
@@ -665,52 +672,54 @@ footer.disclaimer .fine strong{color:var(--muted)}
   <p class="lede reveal">Recurring themes from forums and skincare communities, paraphrased. Every one is an <strong>unverified personal story</strong> — useful for knowing what to watch for, useless as proof.</p>
   <div class="folk-note reveal"><strong>Read these like overheard conversations, not results.</strong> No controls, no blinding, heavy survivorship bias — the people who saw nothing mostly don't post.</div>
 
-  <div class="anec-grid">
+    <div class="ulegend reveal"><span class="udot" aria-hidden="true"></span><span><strong>Unverified anecdote</strong> — the pulsing dot marks a paraphrased recurring theme from forums and social media: not verified, not evidence.</span></div>
+
+<div class="anec-grid">
     <div class="anec reveal">
-      <span class="stamp">Unverified anecdote</span>
-      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(122,168,255,.10)"/><circle cx="27" cy="27" r="13" fill="none" stroke="#5f9dff" stroke-width="2.5"/><path d="M27 18c3 4 3 14 0 18M23 20c2 3.4 2 10.6 0 14M31 20c-2 3.4-2 10.6 0 14" stroke="#5f9dff" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="27" cy="27" r="3" fill="#f0973c" class="glow-pulse"/></svg><h4>The "glow" reports</h4></div>
+      
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(122,168,255,.10)"/><circle cx="27" cy="27" r="13" fill="none" stroke="#5f9dff" stroke-width="2.5"/><path d="M27 18c3 4 3 14 0 18M23 20c2 3.4 2 10.6 0 14M31 20c-2 3.4-2 10.6 0 14" stroke="#5f9dff" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="27" cy="27" r="3" fill="#f0973c" class="glow-pulse"/></svg><h4>The "glow" reports</h4><span class="udot" role="img" aria-label="Unverified anecdote"></span></div>
       <p>The single most common theme: <strong>skin looking brighter, firmer, "healthier"</strong> after weeks of topical use. Often described as subtle — the kind of change other people notice before you do.</p>
       <div class="caveat">Caveat: "glow" is the most placebo-prone outcome in skincare. Lighting, sleep, and routine changes all do this too.</div>
     </div>
     <div class="anec reveal d1">
-      <span class="stamp">Unverified anecdote</span>
-      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(232,160,92,.10)"/><path d="M12 30q5-8 10 0t10 0 10 0" stroke="#f0973c" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M14 38q4-5 8 0t8 0 8 0" stroke="#f0973c" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".6"/></svg><h4>Wrinkles softening</h4></div>
+      
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(232,160,92,.10)"/><path d="M12 30q5-8 10 0t10 0 10 0" stroke="#f0973c" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M14 38q4-5 8 0t8 0 8 0" stroke="#f0973c" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".6"/></svg><h4>Wrinkles softening</h4><span class="udot" role="img" aria-label="Unverified anecdote"></span></div>
       <p>Long-term topical users frequently claim <strong>fine lines around eyes and forehead look shallower</strong> after 2–3 months. A few compare it favorably to retinoids without the irritation.</p>
       <div class="caveat">Caveat: this one has partial trial support (the 12-week studies), but forum timelines and magnitudes are self-reported and unverified.</div>
     </div>
     <div class="anec reveal">
-      <span class="stamp">Unverified anecdote</span>
-      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(122,168,255,.10)"/><path d="M27 44c0-8 0-14 0-20M27 24c-4-2-6-6-6-10M27 24c4-2 6-6 6-10M27 30c-3-1-5-4-5-7M27 30c3-1 5-4 5-7" stroke="#5f9dff" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="27" cy="12" r="3.4" fill="#5f9dff" class="float-slow"/></svg><h4>Hair regrowth stories</h4></div>
+      
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(122,168,255,.10)"/><path d="M27 44c0-8 0-14 0-20M27 24c-4-2-6-6-6-10M27 24c4-2 6-6 6-10M27 30c-3-1-5-4-5-7M27 30c3-1 5-4 5-7" stroke="#5f9dff" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="27" cy="12" r="3.4" fill="#5f9dff" class="float-slow"/></svg><h4>Hair regrowth stories</h4><span class="udot" role="img" aria-label="Unverified anecdote"></span></div>
       <p>Scattered reports of <strong>thicker-feeling hair and slower shedding</strong>, usually from scalp serums used for months. Often stacked with minoxidil, making attribution impossible.</p>
       <div class="caveat">Caveat: human hair evidence is the thinnest part of the research. These stories outrun the data by a wide margin.</div>
     </div>
     <div class="anec reveal d1">
-      <span class="stamp">Unverified anecdote</span>
-      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(232,160,92,.10)"/><path d="M14 34l8-12 6 8 6-10 6 14" stroke="#f0973c" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="12" y1="42" x2="42" y2="42" stroke="#7f88a5" stroke-width="2" stroke-linecap="round"/></svg><h4>Faster-healing nicks &amp; spots</h4></div>
+      
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(232,160,92,.10)"/><path d="M14 34l8-12 6 8 6-10 6 14" stroke="#f0973c" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="12" y1="42" x2="42" y2="42" stroke="#7f88a5" stroke-width="2" stroke-linecap="round"/></svg><h4>Faster-healing nicks &amp; spots</h4><span class="udot" role="img" aria-label="Unverified anecdote"></span></div>
       <p>Users dabbing it on <strong>small cuts, blemishes, and post-procedure skin</strong> report quicker-looking recovery. This is the anecdote tier closest to actual trial data.</p>
       <div class="caveat">Caveat: closest to the evidence, but still uncontrolled. Small wounds heal on their own — that's the baseline people forget.</div>
     </div>
     <div class="anec reveal">
-      <span class="stamp">Unverified anecdote</span>
-      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(122,168,255,.10)"/><circle cx="27" cy="27" r="11" fill="none" stroke="#7f88a5" stroke-width="2.5"/><path d="M27 20v7l5 3" stroke="#7f88a5" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg><h4>"Nothing happened"</h4></div>
+      
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(122,168,255,.10)"/><circle cx="27" cy="27" r="11" fill="none" stroke="#7f88a5" stroke-width="2.5"/><path d="M27 20v7l5 3" stroke="#7f88a5" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg><h4>"Nothing happened"</h4><span class="udot" role="img" aria-label="Unverified anecdote"></span></div>
       <p>The quiet majority: <strong>weeks of use, no visible change</strong>. These posts get fewer replies and sink fast, which is exactly why they matter to mention.</p>
       <div class="caveat">Caveat: non-responders are undercounted everywhere. Absence of a post isn't absence of non-response.</div>
     </div>
     <div class="anec reveal d1">
-      <span class="stamp">Unverified anecdote</span>
-      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(37,99,235,.16)"/><path d="M18 14c6 8 6 18 0 26M30 14c6 8 6 18 0 26" stroke="#5f9dff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="36" cy="27" r="4" fill="#f0973c" class="glow-pulse"/></svg><h4>The blue tint</h4></div>
+      
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(37,99,235,.16)"/><path d="M18 14c6 8 6 18 0 26M30 14c6 8 6 18 0 26" stroke="#5f9dff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="36" cy="27" r="4" fill="#f0973c" class="glow-pulse"/></svg><h4>The blue tint</h4><span class="udot" role="img" aria-label="Unverified anecdote"></span></div>
       <p>A practical complaint, not a benefit: <strong>GHK-Cu is blue</strong>, and users report tinted fingertips, stained pillowcases, and a faint blue cast if over-applied.</p>
       <div class="caveat">Caveat: cosmetic nuisance, not a safety signal — but a good authenticity tell. Colorless "GHK-Cu" is suspicious.</div>
     </div>
     <div class="anec reveal">
-      <span class="stamp">Unverified anecdote</span>
-      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(232,160,92,.10)"/><circle cx="22" cy="24" r="7" fill="none" stroke="#f0973c" stroke-width="2.4"/><circle cx="34" cy="30" r="7" fill="none" stroke="#f0973c" stroke-width="2.4" opacity=".55"/><path d="M27 27l3-2" stroke="#f0973c" stroke-width="2" stroke-linecap="round"/></svg><h4>The "purge" debate</h4></div>
+      
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(232,160,92,.10)"/><circle cx="22" cy="24" r="7" fill="none" stroke="#f0973c" stroke-width="2.4"/><circle cx="34" cy="30" r="7" fill="none" stroke="#f0973c" stroke-width="2.4" opacity=".55"/><path d="M27 27l3-2" stroke="#f0973c" stroke-width="2" stroke-linecap="round"/></svg><h4>The "purge" debate</h4><span class="udot" role="img" aria-label="Unverified anecdote"></span></div>
       <p>Some users report <strong>initial breakouts or rough skin</strong> that later clears — others say that's just irritation being rebranded as progress. The argument never resolves.</p>
       <div class="caveat">Caveat: "purging" is a contested concept in dermatology generally. Irritation is the simpler explanation.</div>
     </div>
     <div class="anec reveal d1">
-      <span class="stamp">Unverified anecdote</span>
-      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(122,168,255,.10)"/><circle cx="27" cy="24" r="9" fill="none" stroke="#5f9dff" stroke-width="2.4"/><path d="M27 24v5M27 32v.5" stroke="#5f9dff" stroke-width="2.6" stroke-linecap="round"/><path d="M18 42q9-5 18 0" stroke="#7f88a5" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg><h4>Injectable converts — and doubters</h4></div>
+      
+      <div class="anec-head"><svg class="thumb" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="14" fill="rgba(122,168,255,.10)"/><circle cx="27" cy="24" r="9" fill="none" stroke="#5f9dff" stroke-width="2.4"/><path d="M27 24v5M27 32v.5" stroke="#5f9dff" stroke-width="2.6" stroke-linecap="round"/><path d="M18 42q9-5 18 0" stroke="#7f88a5" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg><h4>Injectable converts — and doubters</h4><span class="udot" role="img" aria-label="Unverified anecdote"></span></div>
       <p>The forum injectable crowd splits: some claim <strong>systemic benefits (joints, recovery)</strong>, others point out there's <strong>zero human data</strong> for that route and call it expensive hope.</p>
       <div class="caveat">Caveat: this is the exact fault line from chapter 04 — topical has trials, injectable has stories. Don't let one borrow the other's credibility.</div>
     </div>
