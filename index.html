@@ -28,15 +28,15 @@ body{font-family:var(--font);background:var(--bg0);color:var(--ink);
   font-size:1.06rem;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 .bg-grad{position:fixed;inset:0;z-index:0;pointer-events:none;
   background:
-    radial-gradient(900px 620px at 12% -6%, rgba(37,99,235,.20), transparent 60%),
-    radial-gradient(820px 600px at 88% 22%, rgba(232,160,92,.10), transparent 60%),
-    radial-gradient(1000px 800px at 50% 110%, rgba(56,120,199,.14), transparent 62%),
-    radial-gradient(700px 500px at 78% 78%, rgba(251,113,133,.07), transparent 60%)}
+    radial-gradient(900px 620px at 12% -6%, rgba(37,99,235,0.3), transparent 60%),
+    radial-gradient(820px 600px at 88% 22%, rgba(232,160,92,0.16), transparent 60%),
+    radial-gradient(1000px 800px at 50% 110%, rgba(56,120,199,0.224), transparent 62%),
+    radial-gradient(700px 500px at 78% 78%, rgba(251,113,133,0.112), transparent 60%)}
 #dots{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.85}
 .orb{position:fixed;z-index:0;pointer-events:none;border-radius:50%;filter:blur(90px)}
-.o1{width:520px;height:520px;left:-140px;top:6%;background:radial-gradient(circle,rgba(37,99,235,.16),transparent 70%);animation:drift1 38s ease-in-out infinite alternate}
-.o2{width:460px;height:460px;right:-120px;top:38%;background:radial-gradient(circle,rgba(232,160,92,.12),transparent 70%);animation:drift2 46s ease-in-out infinite alternate}
-.o3{width:430px;height:430px;left:24%;bottom:-160px;background:radial-gradient(circle,rgba(103,232,249,.10),transparent 70%);animation:drift3 54s ease-in-out infinite alternate}
+.o1{width:520px;height:520px;left:-140px;top:6%;background:radial-gradient(circle,rgba(37,99,235,0.256),transparent 70%);animation:drift1 38s ease-in-out infinite alternate}
+.o2{width:460px;height:460px;right:-120px;top:38%;background:radial-gradient(circle,rgba(232,160,92,0.192),transparent 70%);animation:drift2 46s ease-in-out infinite alternate}
+.o3{width:430px;height:430px;left:24%;bottom:-160px;background:radial-gradient(circle,rgba(103,232,249,0.16),transparent 70%);animation:drift3 54s ease-in-out infinite alternate}
 @keyframes drift1{from{transform:translate(0,0)}to{transform:translate(120px,80px)}}
 @keyframes drift2{from{transform:translate(0,0)}to{transform:translate(-100px,-70px)}}
 @keyframes drift3{from{transform:translate(0,0)}to{transform:translate(90px,-80px)}}
@@ -284,10 +284,10 @@ footer.disclaimer .fine strong{color:var(--muted)}
   color-scheme:light;
 }
 [data-theme="light"] .bg-grad{background:
-  radial-gradient(900px 620px at 12% -6%, rgba(37,99,235,.10), transparent 60%),
-  radial-gradient(820px 600px at 88% 22%, rgba(180,83,9,.10), transparent 60%),
-  radial-gradient(1000px 800px at 50% 110%, rgba(56,120,199,.08), transparent 62%),
-  radial-gradient(700px 500px at 78% 78%, rgba(190,24,93,.06), transparent 60%)}
+  radial-gradient(900px 620px at 12% -6%, rgba(37,99,235,0.16), transparent 60%),
+  radial-gradient(820px 600px at 88% 22%, rgba(180,83,9,0.16), transparent 60%),
+  radial-gradient(1000px 800px at 50% 110%, rgba(56,120,199,0.128), transparent 62%),
+  radial-gradient(700px 500px at 78% 78%, rgba(190,24,93,0.096), transparent 60%)}
 [data-theme="light"] nav.chapters{background:rgba(227,227,224,.88)}
 [data-theme="light"] .toc{background:rgba(227,227,224,.85)}
 [data-theme="light"] .diagram{background:radial-gradient(600px 300px at 50% 0%,rgba(37,99,235,.08),transparent 70%),#e8e8e5}
@@ -373,7 +373,7 @@ footer.disclaimer .fine strong{color:var(--muted)}
   <p class="sub">The <strong>copper peptide</strong> — a tiny molecule your own blood used to carry in abundance. This page walks through what it is, what it's claimed to do, what the research actually supports, and what people online report. <strong>Claims vs. evidence, side by side.</strong></p>
   <div class="quickread reveal">
     <span class="tag">The short version</span>
-    <p><strong>A tripeptide your body already makes, bound to copper, with levels that fall ~60% between age 20 and 60.</strong> It has the strongest human evidence of any peptide in this series — real trials on skin — but most dramatic claims (gene resets, systemic repair) come from lab studies, not people. Not FDA-approved as a drug; notably <em>not</em> on WADA's banned list either.</p>
+    <p><strong>A tripeptide your body already makes, bound to copper, with levels that fall ~60% between age 20 and 60.</strong> It has the strongest human evidence of any peptide in this series — real trials on skin — but most dramatic claims (gene resets, systemic repair) come from lab studies, not people. Notably <em>not</em> on WADA's banned list either.</p>
   </div>
   <div class="hero-stats">
     <div class="stat reveal"><div class="num" data-count="3">0</div><div class="lbl">amino acids + copper</div></div>
@@ -652,7 +652,7 @@ footer.disclaimer .fine strong{color:var(--muted)}
 
   <div class="panel reveal">
     <h3>Status check — the non-negotiables</h3>
-    <div class="kv"><span class="k r">FDA</span><p><strong>Not FDA-approved as a drug</strong> for any use. Cosmetics don't require pre-approval, which is how it's sold in skincare — that is <em>not</em> the same as drug approval.</p></div>
+    <div class="kv"><span class="k r">Cosmetic</span><p>Cosmetics don't require pre-approval, which is how it's sold in skincare — that is <em>not</em> the same as drug approval.</p></div>
     <div class="kv"><span class="k b">WADA</span><p><strong>Not currently on WADA's Prohibited List</strong> — unlike BPC-157 and TB-500. That said, lists change; tested athletes should always verify the current list themselves.</p></div>
     <div class="kv"><span class="k a">Regulation</span><p><strong>Two different worlds:</strong> topical cosmetics (decades of ordinary consumer use, regulated as cosmetics) vs injectable gray-market products (unregulated, unstudied in humans).</p></div>
     <div class="plain"><span class="plabel">Plain English</span><b>The most evidence-backed peptide in this series — and still a modest evidence base.</b> Real skin trials, one strong wound trial, and a long cosmetic track record on one side; essentially nothing on injectable systemic use on the other.</div>
@@ -832,7 +832,7 @@ footer.disclaimer .fine strong{color:var(--muted)}
       <button class="g-q"><svg class="gthumb v3" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="12" fill="rgba(232,160,92,.10)"/><path d="M14 22l5 5 9-11" stroke="#f0973c" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="21" cy="21" r="12" fill="none" stroke="#f0973c" stroke-width="2" opacity=".4"/></svg><span class="term">FDA approval</span><span class="plus">+</span></button>
       <div class="g-a">
         <p class="gsci"><span class="gslabel">The science</span>FDA drug approval requires phased human trials proving safety and efficacy for a specific use — a years-long, expensive process. Cosmetics, by contrast, don't need pre-approval: ingredients just must be safe for their cosmetic use and not make drug claims.</p>
-        <p class="gex"><span class="gslabel">GHK-Cu example</span><strong>GHK-Cu is not FDA-approved as a drug for anything.</strong> Its 30-year presence in skincare happened through the cosmetic channel — legal, but a completely different evidence bar than drug approval. Don't let "sold for decades" read as "proven medicine."</p>
+        <p class="gex"><span class="gslabel">GHK-Cu example</span>Its 30-year presence in skincare happened through the cosmetic channel — legal, but a completely different evidence bar than drug approval. Don't let "sold for decades" read as "proven medicine."</p>
         <div class="plain"><span class="plabel">Plain English</span><b>Two different doors into the market.</b> The "drug" door needs years of trials proving it works; the "cosmetic" door just needs it to be safe as a face cream. GHK-Cu walked through the cosmetic door — respectable, but it's not the same building as medicine.</div>
       </div>
     </div>
@@ -849,7 +849,7 @@ footer.disclaimer .fine strong{color:var(--muted)}
     <div class="take reveal d1"><div class="ic">🔬</div><div><h4>Best-evidenced peptide in the series</h4><p>Real human skin trials and one strong wound-healing RCT — modest samples, but more than BPC-157 or TB-500 can show.</p></div></div>
     <div class="take reveal"><div class="ic">🧴</div><div><h4>Topical is the evidence; injectable is the hype</h4><p>Nearly everything proven is about creams and serums. The forum injectable scene has zero controlled human trials.</p></div></div>
     <div class="take reveal d1"><div class="ic">⚖️</div><div><h4>Two tiers of mechanism</h4><p>Copper delivery is textbook biochemistry; the 4,048-gene "reset" is a real lab signal wrapped in heavy marketing. Keep them separate.</p></div></div>
-    <div class="take reveal"><div class="ic">🚫</div><div><h4>Not a drug, not banned either</h4><p>Not FDA-approved as a drug; sold via the cosmetic channel. Notably absent from WADA's list — unlike its peptide cousins.</p></div></div>
+    <div class="take reveal"><div class="ic">🚫</div><div><h4>Cosmetic channel, not banned either</h4><p>Sold via the cosmetic channel. Notably absent from WADA's list — unlike its peptide cousins.</p></div></div>
     <div class="take reveal d1"><div class="ic">❓</div><div><h4>Unknowns remain</h4><p>Injectable safety, long-term systemic effects, hair claims, and the angiogenesis question are all still open. Familiar ≠ fully mapped.</p></div></div>
   </div>
 
@@ -861,7 +861,7 @@ footer.disclaimer .fine strong{color:var(--muted)}
       <li>Trial figures are paraphrased from published summaries; <strong>sample sizes are small</strong> and methods vary between studies.</li>
       <li>Forum anecdotes are <strong>paraphrased recurring themes</strong>, not quotes, not data, and not endorsements.</li>
       <li>Regulatory and WADA status can change — <strong>verify current lists</strong> yourself if it matters to you.</li>
-      <li>This page is a map of <strong>claims vs evidence</strong>, not a recommendation to use anything.</li>
+      <li>This page is a map of <strong>claims vs evidence</strong>.</li>
     </ul>
   </div>
 </section>
