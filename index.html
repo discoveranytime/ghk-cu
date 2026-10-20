@@ -603,10 +603,14 @@ mini-poll { display: block; }
 @keyframes kzLblIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
 .kz-ptr{stroke-dasharray:340;stroke-dashoffset:340;animation:kzDraw 1.4s cubic-bezier(.4,0,.2,1) forwards}
 @keyframes kzDraw{to{stroke-dashoffset:0}}
+.kz-sway{transform-origin:500px 330px;animation:kzSway 9s ease-in-out infinite alternate}
+@keyframes kzSway{from{transform:rotate(-.55deg) translateY(-2.5px)}to{transform:rotate(.55deg) translateY(2.5px)}}
+.kz-flow2{stroke-dasharray:2 14;animation:kzFlow2 4.2s linear infinite}
+@keyframes kzFlow2{to{stroke-dashoffset:-64}}
 .kz-ptcl{animation:kzPtFloat var(--pd,16s) ease-in-out var(--pdel,0s) infinite alternate}
 @keyframes kzPtFloat{from{transform:translate(0,0)}to{transform:translate(var(--px,10px),var(--py,-16px))}}
 @media (prefers-reduced-motion:reduce){
-  .kz-orbit,.kz-cuPulse,.kz-cuGlow,.kz-bondFlow,.kz-lbl,.kz-ptr,.kz-ptcl{animation:none !important}
+  .kz-orbit,.kz-cuPulse,.kz-cuGlow,.kz-bondFlow,.kz-lbl,.kz-ptr,.kz-ptcl,.kz-sway,.kz-flow2{animation:none !important}
   .kz-lbl{opacity:1}.kz-ptr{stroke-dashoffset:0}
 }
 </style>
@@ -662,6 +666,7 @@ mini-poll { display: block; }
         <circle class="kz-ptcl" style="--pd:16s;--pdel:-5s;--px:11px;--py:13px" cx="886" cy="556" r="2.4" opacity=".55"/>
       </g>
 
+      <g class="kz-sway">
       <!-- backbone bonds -->
       <g stroke="#8fb6e8" stroke-opacity=".55" stroke-width="2.4" stroke-linecap="round">
         <line x1="415" y1="252" x2="352" y2="196"/>
@@ -678,6 +683,22 @@ mini-poll { display: block; }
         <line x1="512" y1="548" x2="452" y2="600"/>
         <line x1="452" y1="600" x2="384" y2="584"/>
         <line x1="384" y1="584" x2="330" y2="618"/>
+      </g>
+      <g stroke="#bfe0ff" stroke-opacity=".45" stroke-width="2.4" stroke-linecap="round" fill="none" aria-hidden="true">
+        <path class="kz-flow2" d="M415 252 L352 196"/>
+        <path class="kz-flow2" d="M352 196 L288 222"/>
+        <path class="kz-flow2" d="M288 222 L292 306"/>
+        <path class="kz-flow2" d="M292 306 L330 392"/>
+        <path class="kz-flow2" d="M330 392 L398 430"/>
+        <path class="kz-flow2" d="M398 430 L440 482"/>
+        <path class="kz-flow2" d="M330 392 L384 470"/>
+        <path class="kz-flow2" d="M384 470 L452 500"/>
+        <path class="kz-flow2" d="M452 500 L512 548"/>
+        <path class="kz-flow2" d="M512 548 L578 516"/>
+        <path class="kz-flow2" d="M578 516 L590 452"/>
+        <path class="kz-flow2" d="M512 548 L452 600"/>
+        <path class="kz-flow2" d="M452 600 L384 584"/>
+        <path class="kz-flow2" d="M384 584 L330 618"/>
       </g>
       <!-- carbonyl double bonds -->
       <g stroke="#a5f3fc" stroke-opacity=".8" stroke-width="2.2" stroke-linecap="round">
@@ -758,7 +779,7 @@ mini-poll { display: block; }
         <circle cx="330" cy="618" r="11" fill="#5b8cff" stroke="#dbeafe" stroke-width="1.2"/>
         <text x="330" y="622" font-size="10.5" fill="#fff">N</text>
       </g>
-
+      </g>
       <!-- central copper -->
       <circle cx="500" cy="330" r="92" fill="url(#kzGlowGrad)" opacity=".65"/>
       <g>
